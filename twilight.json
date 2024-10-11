@@ -806,6 +806,13 @@
                     ]
                 }
             ]
+        },
+        {
+            "key": "1c428291-7ec2-4c49-98e2-21d8c5291119",
+            "title": "منتجات متحركه مخصاص",
+            "icon": "sicon-table",
+            "path": "home.sliader-prodcts",
+            "fields": []
         }
     ],
     "support_url": "https://ahmedmansour.vercel.app/",
