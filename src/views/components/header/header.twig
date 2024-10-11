@@ -1,13 +1,10 @@
-{#
-| Variable         | Type    | Description                     |
-|------------------|---------|---------------------------------|
-| cart             | object  |                                 |
-| cart.items_count | int     |                                 |
-| cart.total       | string  | Formatted total ex: "١٠٠ ر.س"   |
-#}
-{% set important_links = theme.settings.get('important_links') %}
+{# | Variable | Type | Description |
+|------------------|---------|---------------------------------| | cart | object
+| | | cart.items_count | int | | | cart.total | string | Formatted total ex:
+"١٠٠ ر.س" | #} {% set important_links = theme.settings.get('important_links') %}
 <header class="store-header">
   {# Top Nav #}
+  <!--
   <div class="top-navbar">
     <div class="container flex justify-between">
       <div class="flex-1 flex items-center gap-2">
@@ -44,43 +41,121 @@
       <salla-contacts is-header></salla-contacts>
     </div>
   </div>
-
+-->
   {# Main Nav #}
   <div id="mainnav" class="main-nav-container shadow-default bg-white">
-      <div class="inner bg-inherit">
-          <div class="container">
-              <div class="flex items-stretch justify-between relative">
-                  <div class="flex items-center">
-                      <a class="lg:hidden mburger mburger--collapse leading-none rtl:ml-4 ltr:mr-4" href="#mobile-menu" aria-label="Open-menu">
-                        <i class="sicon-menu text-primary text-2xl"></i>
-                      </a>
-                      <a class="navbar-brand" href="{{ store.url }}">
-                          <img fetchpriority="high" width="100%" height="100%" loading="eager" src="{{ store.logo }}" alt="{{ store.name }} logo">
-                          {% if is_page('index') %}
-                            <h1 class="sr-only">{{ store.name }}</h1>
-                          {% else %}
-                            <h2 class="sr-only">{{ store.name }}</h2>
-                          {% endif %}
-                      </a>
-                      <custom-main-menu></custom-main-menu>
-                  </div>
-                  <div class="flex items-center justify-end">
-                      {% if user.type=='user' %}
-                        <salla-user-menu avatar-only show-header></salla-user-menu>
-                      {% else %}
-                          <button class="header-btn" aria-label="user-icon" onclick="salla.event.dispatch('login::open')">
-                            <i class="header-btn__icon sicon-user-circle"></i>
-                          </button>
-                      {% endif %}
-                      <salla-cart-summary class="ml-4 rtl:ml-[unset] rtl:mr-4">
-                        <i slot="icon" class="header-btn__icon icon sicon-shopping-bag"></i>
-                      </salla-cart-summary>
-                  </div>
-              </div>
+    <div class="inner bg-inherit">
+      <div class="container">
+        <div class="flex items-stretch justify-between relative">
+          <div class="flex items-center">
+            <a
+              class="lg:hidden mburger mburger--collapse leading-none rtl:ml-4 ltr:mr-4"
+              href="#mobile-menu"
+              aria-label="Open-menu"
+            >
+              <i class="sicon-menu text-primary text-2xl"></i>
+            </a>
+            <a class="navbar-brand" href="{{ store.url }}">
+              <img
+                fetchpriority="high"
+                width="100%"
+                height="100%"
+                loading="eager"
+                src="{{ store.logo }}"
+                alt="{{ store.name }} logo"
+              />
+              {% if is_page('index') %}
+              <h1 class="sr-only">{{ store.name }}</h1>
+              {% else %}
+              <h2 class="sr-only">{{ store.name }}</h2>
+              {% endif %}
+            </a>
+            <custom-main-menu></custom-main-menu>
           </div>
+          <div class="flex items-center justify-end">
+            {% if user.type=='user' %}
+            <salla-user-menu avatar-only show-header></salla-user-menu>
+            {% else %}
+            <button
+              class="header-btn"
+              aria-label="user-icon"
+              onclick="salla.event.dispatch('login::open')"
+            >
+              <i class="header-btn__icon sicon-user-circle"></i>
+            </button>
+            {% endif %}
+            <salla-cart-summary class="ml-4 rtl:ml-[unset] rtl:mr-4">
+              <i
+                slot="icon"
+                class="header-btn__icon icon sicon-shopping-bag"
+              ></i>
+            </salla-cart-summary>
+          </div>
+        </div>
       </div>
+    </div>
   </div>
 </header>
+<nav class="nav w-max px-2 py-1">
+  <ul
+    class="flex rounded-full bg-gradient-to-t from-gray-900 to-gray-700 text-white overflow-hidden shadow-lg h-12"
+  >
+    <li>
+      <a
+        href="#"
+        class="px-6 h-12 flex items-center bg-gradient-to-t from-main/40 to-yellow-500 transition-colors duration-300 transform hover:scale-105"
+      >
+        <p class="mt-[-5px]">الرئيسية</p>
+      </a>
+    </li>
+    <li>
+      <a
+        href="#"
+        class="px-6 h-12 flex items-center transition-colors duration-300 transform hover:scale-105 hover:bg-gray-700 rounded-full"
+      >
+        <p class="mt-[-5px]">الوحدات</p>
+      </a>
+    </li>
+    <li>
+      <a
+        href="#"
+        class="px-6 h-12 flex items-center transition-colors duration-300 transform hover:scale-105 hover:bg-gray-700 rounded-full"
+      >
+        <p class="mt-[-5px]">عروض</p>
+      </a>
+    </li>
+    <li>
+      <a
+        href="#"
+        class="px-6 h-12 flex items-center transition-colors duration-300 transform hover:scale-105 hover:bg-gray-700 rounded-full"
+      >
+        <p class="mt-[-5px]">
+          من نحن
+        </p>
+      </a>
+    </li>
+    <li>
+      <a
+        href="#"
+        class="px-6 h-12 flex items-center transition-colors duration-300 transform hover:scale-105 hover:bg-gray-700 rounded-full"
+      >
+        <p class="mt-[-5px]">
+          تحت الطلب
+        </p>
+      </a>
+    </li>
+  </ul>
+</nav>
+  {% for item in menus %}
+          <li class="lg:hidden text-sm font-bold">
+            <a href="{{ item.url }}" aria-label="{{ item.title }}" class="text-gray-500">
+              {{ item.title }}
+            </a>
+          </li>
+  {% endfor %}
+
 {% if store.scope %}
-    <salla-scopes selection="{{ store.scope.display_as == 'popup' ? 'mandatory' : 'optional' }}"></salla-scopes>
+<salla-scopes
+  selection="{{ store.scope.display_as == 'popup' ? 'mandatory' : 'optional' }}"
+></salla-scopes>
 {% endif %}
