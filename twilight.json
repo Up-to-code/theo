@@ -812,7 +812,24 @@
             "title": "منتجات متحركه مخصاص",
             "icon": "sicon-table",
             "path": "home.sliader-prodcts",
-            "fields": []
+            "fields": [
+                {
+                    "id": "products",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "Dropdown List",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-keyboard_arrow_down",
+                    "selected": [],
+                    "options": [],
+                    "source": "Products",
+                    "multichoice": true,
+                    "searchable": true,
+                    "required": false,
+                    "value": []
+                }
+            ]
         }
     ],
     "support_url": "https://ahmedmansour.vercel.app/",
