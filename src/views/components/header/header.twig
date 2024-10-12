@@ -1,3 +1,4 @@
+
 {# | Variable | Type | Description |
 |------------------|---------|---------------------------------| | cart | object
 | | | cart.items_count | int | | | cart.total | string | Formatted total ex:
@@ -96,64 +97,66 @@
     </div>
   </div>
 </header>
-<nav class="nav w-max px-2 py-1">
+
+
+<nav class="nav w-max px-2 py-1 h-12">
   <ul
-    class="flex rounded-full bg-gradient-to-t from-gray-900 to-gray-700 text-white overflow-hidden shadow-lg h-12"
+    class="flex rounded-full text-white overflow-hidden shadow-lg min-h-fit"
+    style="background-image: url('{{ 'images/223.svg' | asset }}');  "
   >
+    <!-- Navigation Item: الرئيسية -->
     <li>
       <a
         href="#"
-        class="px-6 h-12 flex items-center bg-gradient-to-t from-main/40 to-yellow-500 transition-colors duration-300 transform hover:scale-105"
+        class="px-6 h-12 flex items-center bg-gradient-to-t from-main/40 to-yellow-500 transition-transform duration-300 transform hover:scale-110 hover:shadow-md rounded-full"
       >
-        <p class="mt-[-5px]">الرئيسية</p>
+        <p class="leading-none">الرئيسية</p>
       </a>
     </li>
+
+    <!-- Navigation Item: الوحدات -->
     <li>
       <a
         href="#"
-        class="px-6 h-12 flex items-center transition-colors duration-300 transform hover:scale-105 hover:bg-gray-700 rounded-full"
+        class="px-6 h-12 flex items-center transition-colors duration-300 transform hover:scale-110 hover:bg-gray-700 rounded-full"
       >
-        <p class="mt-[-5px]">الوحدات</p>
+        <p class="leading-none">الوحدات</p>
       </a>
     </li>
+
+    <!-- Navigation Item: عروض -->
     <li>
       <a
         href="#"
-        class="px-6 h-12 flex items-center transition-colors duration-300 transform hover:scale-105 hover:bg-gray-700 rounded-full"
+        class="px-6 h-12 flex items-center transition-colors duration-300 transform hover:scale-110 hover:bg-gray-700 rounded-full"
       >
-        <p class="mt-[-5px]">عروض</p>
+        <p class="leading-none">عروض</p>
       </a>
     </li>
+
+    <!-- Navigation Item: من نحن -->
     <li>
       <a
         href="#"
-        class="px-6 h-12 flex items-center transition-colors duration-300 transform hover:scale-105 hover:bg-gray-700 rounded-full"
+        class="px-6 h-12 flex items-center transition-colors duration-300 transform hover:scale-110 hover:bg-gray-700 rounded-full"
       >
-        <p class="mt-[-5px]">
-          من نحن
-        </p>
+        <p class="leading-none">من نحن</p>
       </a>
     </li>
+
+    <!-- Navigation Item: تحت الطلب -->
     <li>
       <a
         href="#"
-        class="px-6 h-12 flex items-center transition-colors duration-300 transform hover:scale-105 hover:bg-gray-700 rounded-full"
+        class="px-6 h-12 flex items-center transition-colors duration-300 transform hover:scale-110 hover:bg-gray-700 rounded-full"
       >
-        <p class="mt-[-5px]">
-          تحت الطلب
-        </p>
+        <p class="leading-none">تحت الطلب</p>
       </a>
     </li>
   </ul>
 </nav>
-  {% for item in menus %}
-          <li class="lg:hidden text-sm font-bold">
-            <a href="{{ item.url }}" aria-label="{{ item.title }}" class="text-gray-500">
-              {{ item.title }}
-            </a>
-          </li>
-  {% endfor %}
-
+ 
+ 
 {% if store.scope %}
 <salla-scopes
   selection="{{ store.scope.display_as == 'popup' ? 'mandatory' : 'optional' }}"

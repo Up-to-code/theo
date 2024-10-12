@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 535.6 53.6">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: url(#Dégradé_sans_nom);
+      }
+
+      .cls-3 {
+        fill: url(#Dégradé_sans_nom_2);
+        isolation: isolate;
+        opacity: .2;
+      }
+
+      .cls-4 {
+        clip-path: url(#clippath);
+      }
+    </style>
+    <linearGradient id="Dégradé_sans_nom" data-name="Dégradé sans nom" x1="264.6" y1="53.8" x2="264.6" y2="2.6" gradientTransform="translate(0 53.9) scale(1 -1)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#3a3839"/>
+      <stop offset="1" stop-color="#272425"/>
+    </linearGradient>
+    <clipPath id="clippath">
+      <rect class="cls-1" x="18.5" y="7.8" width="492.2" height="38.8" rx="12.1" ry="12.1"/>
+    </clipPath>
+    <linearGradient id="Dégradé_sans_nom_2" data-name="Dégradé sans nom 2" x1="267.8" y1="69.9" x2="267.8" y2="10.1" gradientTransform="translate(0 53.9) scale(1 -1)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <!-- Generator: Adobe Illustrator 28.7.1, SVG Export Plug-In . SVG Version: 1.2.0 Build 142)  -->
+  <g>
+    <g id="Calque_1">
+      <rect class="cls-2" x="18.5" y="7.8" width="492.2" height="38.8" rx="12.1" ry="12.1"/>
+      <g class="cls-4">
+        <path class="cls-3" d="M6.3,21.3s424.4,40,519.4-2.7C620.7-24,0-.6,0-.6l6.3,21.9"/>
+      </g>
+    </g>
+  </g>
+</svg>
