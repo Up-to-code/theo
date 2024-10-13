@@ -99,62 +99,80 @@
 </header>
 
 
-<nav class="nav w-max px-2 py-1 h-12">
-  <ul
-    class="flex rounded-full text-white overflow-hidden shadow-lg min-h-fit"
-    style="background-image: url('{{ 'images/223.svg' | asset }}');  "
-  >
+
+
+
+<nav class="w-max px-4 h-[48px]   bg-opacity-90 mt-4"
+
+>
+  <ul class="flex rounded-full text-white overflow-hidden h-full"  style="
+    background-image: url('{{ 'images/Calque_1.svg' | asset }}');
+    background-size: cover;
+    background-position: center;
+  ">
     <!-- Navigation Item: الرئيسية -->
-    <li>
+    <li class="">
       <a
         href="#"
-        class="px-6 h-12 flex items-center bg-gradient-to-t from-main/40 to-yellow-500 transition-transform duration-300 transform hover:scale-110 hover:shadow-md rounded-full"
+        class="px-5 py-2 h-12 flex items-center justify-center bg-gradient-to-t from-main/40 to-yellow-500 transition-all duration-300 ease-in-out transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-yellow-400 "
       >
-        <p class="leading-none">الرئيسية</p>
+        <p class="leading-none text-base font-semibold">الرئيسية</p>
       </a>
     </li>
 
     <!-- Navigation Item: الوحدات -->
-    <li>
+    <li class="mx-2">
       <a
         href="#"
-        class="px-6 h-12 flex items-center transition-colors duration-300 transform hover:scale-110 hover:bg-gray-700 rounded-full"
+        class="px-5 py-2 h-12 flex items-center justify-center transition-all duration-300 ease-in-out transform hover:scale-110 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 rounded-full"
       >
-        <p class="leading-none">الوحدات</p>
+        <p class="leading-none text-base font-semibold">الوحدات</p>
       </a>
     </li>
 
     <!-- Navigation Item: عروض -->
-    <li>
+    <li class="mx-2">
       <a
         href="#"
-        class="px-6 h-12 flex items-center transition-colors duration-300 transform hover:scale-110 hover:bg-gray-700 rounded-full"
+        class="px-5 py-2 h-12 flex items-center justify-center transition-all duration-300 ease-in-out transform hover:scale-110 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 rounded-full"
       >
-        <p class="leading-none">عروض</p>
+        <p class="leading-none text-base font-semibold">عروض</p>
       </a>
     </li>
 
     <!-- Navigation Item: من نحن -->
-    <li>
+    <li class="mx-2">
       <a
         href="#"
-        class="px-6 h-12 flex items-center transition-colors duration-300 transform hover:scale-110 hover:bg-gray-700 rounded-full"
+        class="px-5 py-2 h-12 flex items-center justify-center transition-all duration-300 ease-in-out transform hover:scale-110 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 rounded-full"
       >
-        <p class="leading-none">من نحن</p>
+        <p class="leading-none text-base font-semibold">من نحن</p>
       </a>
     </li>
 
     <!-- Navigation Item: تحت الطلب -->
-    <li>
+    <li class="mx-2">
       <a
         href="#"
-        class="px-6 h-12 flex items-center transition-colors duration-300 transform hover:scale-110 hover:bg-gray-700 rounded-full"
+        class="px-5 py-2 h-12 flex items-center justify-center transition-all duration-300 ease-in-out transform hover:scale-110 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 rounded-full"
       >
-        <p class="leading-none">تحت الطلب</p>
+        <p class="leading-none text-base font-semibold">تحت الطلب</p>
       </a>
     </li>
   </ul>
 </nav>
+
+{% for item in component.menus %}
+    <a href="{{item.url}}">
+        <li class="lg:hidden text-sm font-bold" {{item.attrs}}>
+            {{item.title}}
+        </li>
+    </a>
+{% endfor %}
+
+
+
+
  
  
 {% if store.scope %}

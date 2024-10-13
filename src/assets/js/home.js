@@ -28,3 +28,7 @@ class Home extends BasePage {
 }
 
 Home.initiateWhenReady(['index']);
+
+ 
+
+console.log('Home page loaded');

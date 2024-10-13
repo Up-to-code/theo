@@ -27,3 +27,8 @@ $main-text-color: var(--main-text-color);
   /* plugins */
   --mm-ocd-width: calc(100% - 51px);
 }
+
+.bg-image {
+  background-image: url("{{ 'images/p1.png' | asset }}");
+  background-size: cover;
+}
