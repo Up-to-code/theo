@@ -3,7 +3,7 @@
 |------------------|---------|---------------------------------| | cart | object
 | | | cart.items_count | int | | | cart.total | string | Formatted total ex:
 "١٠٠ ر.س" | #} {% set important_links = theme.settings.get('important_links') %}
-<header class="store-header">
+<header class="store-header hidden">
   {# Top Nav #}
   <!--
   <div class="top-navbar">
@@ -100,9 +100,9 @@
 
 
 
+ <div class="h-[48px]"></div>
 
-
-<nav class="w-max px-4 h-[48px]   bg-opacity-90 mt-4"
+<nav class="w-max px-4 h-[48px]   bg-opacity-90 mt-4 fixed top-0 left-0 right-0 z-50"
 
 >
   <ul class="flex rounded-full text-white overflow-hidden h-full"  style="
