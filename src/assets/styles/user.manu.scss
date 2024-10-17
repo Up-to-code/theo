@@ -1,0 +1,9 @@
+.s-user-menu-trigger{
+    background: transparent !important;
+}
+.s-user-menu-toggler.opened .s-user-menu-dropdown{
+@apply bg-gradient-to-t from-zinc-800 to-black right-5    z-50
+}
+.s-user-menu-dropdown-item a{
+  color: white;
+}

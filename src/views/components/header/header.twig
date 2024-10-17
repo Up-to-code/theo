@@ -72,35 +72,42 @@
             </a>
             <custom-main-menu></custom-main-menu>
           </div>
-          <div class="flex items-center justify-end">
-            {% if user.type=='user' %}
-            <salla-user-menu avatar-only show-header></salla-user-menu>
-            {% else %}
-            <button
-              class="header-btn"
-              aria-label="user-icon"
-              onclick="salla.event.dispatch('login::open')"
-            >
-              <i class="header-btn__icon sicon-user-circle"></i>
-            </button>
-            {% endif %}
-            <salla-cart-summary class="ml-4 rtl:ml-[unset] rtl:mr-4">
-              <i
-                slot="icon"
-                class="header-btn__icon icon sicon-shopping-bag"
-              ></i>
-            </salla-cart-summary>
-          </div>
+
         </div>
       </div>
     </div>
   </div>
 </header>
-
-<div class="h-[48px]"></div>
-
+ 
+<div>
+  <div class="flex items-center ">
+    {% if user.type=='user' %}
+    <salla-user-menu avatar-only   
+      relative-dropdown ></salla-user-menu>
+    {% else %}
+    <button
+      class="header-btn"
+      aria-label="user-icon"
+      onclick="salla.event.dispatch('login::open')"
+    >
+      <i class="header-btn__icon sicon-user-circle"></i>
+    </button>
+    {% endif %}
+    <salla-cart-summary class="ml-4 rtl:ml-[unset] rtl:mr-4">
+       <i
+        slot="icon"
+       class=" sicon-shopping-bag text-white text-2xl mt-2"
+       style="
+       position: relative;
+       /* margin-top: 86px; */
+       bottom: -3px;
+       left: -3px;
+   "></i>
+    </salla-cart-summary>
+  </div>
+</div>
 <nav
-  class="w-max px-4 h-[48px] bg-opacity-90 mt-4 fixed top-0 left-0 right-0 z-50"
+  class="w-max px-4 h-[48px] bg-opacity-90 mt-5   "
 >
   <ul
     class="flex rounded-full text-white overflow-hidden h-full"
