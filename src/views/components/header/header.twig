@@ -72,18 +72,16 @@
             </a>
             <custom-main-menu></custom-main-menu>
           </div>
-
         </div>
       </div>
     </div>
   </div>
 </header>
- 
+
 <div>
-  <div class="flex items-center ">
+  <div class="flex items-center">
     {% if user.type=='user' %}
-    <salla-user-menu avatar-only   
-      relative-dropdown ></salla-user-menu>
+    <salla-user-menu avatar-only relative-dropdown></salla-user-menu>
     {% else %}
     <button
       class="header-btn"
@@ -94,21 +92,20 @@
     </button>
     {% endif %}
     <salla-cart-summary class="ml-4 rtl:ml-[unset] rtl:mr-4">
-       <i
+      <i
         slot="icon"
-       class=" sicon-shopping-bag text-white text-2xl mt-2"
-       style="
-       position: relative;
-       /* margin-top: 86px; */
-       bottom: -3px;
-       left: -3px;
-   "></i>
+        class="sicon-shopping-bag text-white text-2xl mt-2"
+        style="
+          position: relative;
+          /* margin-top: 86px; */
+          bottom: -3px;
+          left: -3px;
+        "
+      ></i>
     </salla-cart-summary>
   </div>
 </div>
-<nav
-  class="w-max px-4 h-[48px] bg-opacity-90 mt-5   "
->
+<nav class="w-max px-4 h-[48px] bg-opacity-90 mt-5">
   <ul
     class="flex rounded-full text-white overflow-hidden h-full"
     style="
