@@ -589,7 +589,6 @@ select{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/
 .h-full{height:100%}
 .h-lg-banner{height:428px}
 .h-px{height:1px}
-.h-\[48\]{height:48}
 .max-h-0{max-height:0px}
 .max-h-8{max-height:2rem}
 .max-h-\[300px\]{max-height:300px}
@@ -719,6 +718,7 @@ select{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/
 .bg-secondary{--tw-bg-opacity:1;background-color:rgba(17, 67, 147, 1);background-color:rgba(17, 67, 147, var(--tw-bg-opacity))}
 .bg-white{--tw-bg-opacity:1;background-color:rgba(234, 228, 228, 1);background-color:rgba(234, 228, 228, var(--tw-bg-opacity))}
 .bg-zinc-900{--tw-bg-opacity:1;background-color:rgba(24, 24, 27, 1);background-color:rgba(24, 24, 27, var(--tw-bg-opacity))}
+.bg-blue-700{--tw-bg-opacity:1;background-color:rgba(29, 78, 216, 1);background-color:rgba(29, 78, 216, var(--tw-bg-opacity))}
 .bg-opacity-90{--tw-bg-opacity:0.9}
 .bg-gradient-to-t{background-image:linear-gradient(to top, var(--tw-gradient-stops))}
 .from-black{--tw-gradient-from:#000 var(--tw-gradient-from-position);--tw-gradient-to:rgba(0, 0, 0, 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}
