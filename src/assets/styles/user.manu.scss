@@ -13,3 +13,7 @@
 .s-cart-summary-total-label{
   color: white;
 }
+
+.s-button-primary{
+  @apply bg-transparent p-0 hover:bg-transparent border-none
+}

@@ -90,64 +90,85 @@
         </nav>     
         
         
-        <div class="min-h-screen flex flex-col">
-                <div class="flex justify-around p-10">
-                    <!-- Image Section -->
-                    <div class="w-1/2">
-                        <img src="{{ product.image.url }}" alt="{{ product.name }}"
-                            class="rounded-lg object-cover shadow-lg w-full max-w-md" />
+        <div class="min-h-screen flex flex-col items-center bg-gray-100">
+            <div class="flex flex-wrap justify-center lg:justify-between p-10 w-full max-w-7xl">
+                <!-- Image Section -->
+                <div class="w-full lg:w-1/2 mb-6 lg:mb-0 flex justify-center">
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}"
+                        class="rounded-lg object-cover shadow-lg w-full max-w-md" />
+                </div>
+        
+                <!-- Details Section -->
+                <div class="w-full lg:w-1/2 bg-gradient-to-t from-zinc-800 to-black rounded-lg p-8 text-white shadow-2xl">
+                    <!-- Title and Description -->
+                    <div class="mb-6">
+                        <h1 class="text-4xl font-bold mb-4">{{ product.name }}</h1>
+                        <p class="text-lg leading-relaxed">{{ product.description }}</p>
                     </div>
         
-                    <!-- Details Section -->
-                    <div class="w-1/2 bg-gradient-to-t from-zinc-800 to-black rounded-big p-10 text-white shadow-2xl">
-                        <!-- Title and Description -->
-                        <div class="mb-4 selection:">
-                            <h1 class="text-3xl font-bold mb-2">{{ product.name }}</h1>
-                            <p class="text-lg">{{ product.description }}</p>
+                    <!-- Price and Call to Actions -->
+                    <div class="flex items-center justify-between mb-6">
+                        <div
+                            class="text-4xl font-bold text-white p-4 bg-gradient-to-t from-black to-zinc-800 rounded-lg flex gap-2 items-end">
+                            {{ product.price }}
+                            <p class="text-sm">ريال</p>
                         </div>
+                    </div>
         
-                        <!-- Price and Call to Actions -->
-                        <div class="flex items-center justify-between mb-6">
-                            <div
-                                class="text-4xl font-bold text-white p-4 bg-gradient-to-t from-black to-zinc-800 rounded-lg flex gap-2 items-end">
-                                {{ product.price }}
-                                <p class="text-sm">
-                                    ريال
-                                </p>
-                            </div>
-                        </div>
-                        <div>
-                            {# is a button #}
-                            <div class="my-2 flex gap-3">
-                                <div
-                                    class="text-2xl font-semibold text-white p-2 px-5 bg-gradient-to-t from-black to-zinc-800 rounded-lg flex gap-2 items-end w-max">
-                                    اطلب الان
-                                </div>
+                    {% if product.options|length %}
+                    <salla-product-options options="{{ product.options }}" product-id="{{ product.id }}"></salla-product-options>
+                    {% endif %}
         
-                                <div
-                                    class="text-2xl font-semibold text-white p-2 px-5 bg-gradient-to-t from-black to-zinc-800 rounded-lg flex gap-2 items-end w-max">
-                                    عرضها
-                                </div>
+                    <!-- Buttons -->
+                    <div class="flex gap-4">
+         
+        <a href=""></a>
+
+                        <salla-mini-checkout-widget                      
+ language="ar" store-id="{{store.id  }}" api="https://api.salla.dev/store/v1/" outline="" form-selector="form.product-form" class="s-add-product-button-mini-checkout s-mini-checkout hide-scroll hydrated">
+                            
+                            
+                            <div slot=""      class=" s-fast-checkout-button  text-2xl font-semibold text-white p-3 px-6 bg-gradient-to-t from-black to-zinc-800 rounded-lg hover:bg-black transition-all">
+اطلب الان
+
                             </div>
+                      </salla-mini-checkout-widget>
+
+
+
+
+
+                        <button class="text-2xl font-semibold text-white p-3 px-6 bg-gradient-to-t from-black to-zinc-800 rounded-lg hover:bg-black transition-all">
+                            عرضها
+                        </button>
+                    </div>
         
-                            <div class="border-t-2 border-main my-2 mt-2 w-full">
-                                <div class="flex gap-3 mt-2">
-                                    <div
-                                        class="text-2xl font-semibold text-white p-2 px-5 bg-gradient-to-t from-black to-zinc-800 rounded-lg flex gap-2 items-end w-max">
-                                        48h
-                                    </div>
-                                    <div
-                                    style="background-image: url('{{ "images/icons/a1.svg" | asset }}');"
-                                        class="w-[100px] h-[50px] bg-no-repeat bg-contain bg-center">
-                                         
-                                    </div>
-                                </div>
+                    <!-- Additional Info Section -->
+                    <div class="border-t-2 border-main/50 my-6 pt-4 flex items-center gap-4">
+                        <div class="flex items-center gap-4">
+                            <div class="text-2xl font-semibold text-white p-3 bg-gradient-to-t from-black to-zinc-800 rounded-lg">
+                                48h
                             </div>
+                            <div style="background-image: url('{{ "images/icons/a1.svg" | asset }}');"
+                                class="w-24 h-14 bg-no-repeat bg-contain bg-center">
+                            </div>
+                            
+                            <salla-add-product-button class="bg-transparent pt-[10px]"
+                                product-id="{{ product.id }}" product-status="{{ product.status }}" product-type="{{ product.type }}">
+                                <div class="w-52 h-14 bg-no-repeat bg-contain bg-center"
+                                    style="background-image: url('{{ "images/icons/addtocart.svg" | asset }}');">
+                                </div>
+                            </salla-add-product-button>
                         </div>
                     </div>
                 </div>
-                <salla-offer></salla-offer>
             </div>
+        
+            <!-- Salla Offer Section -->
+            <salla-offer></salla-offer>
+        </div>
+        
+        
         <div class="flex flex-col items-start md:flex-row" id="product-{{ product.id }}">
          
 
