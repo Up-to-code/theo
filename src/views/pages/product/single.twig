@@ -84,14 +84,10 @@
 {% extends "layouts.master" %}
 {% block content %}
     <div class="container">
-        {# add breadcumbs container in pages to make a space in case breadcrumbs is off #}
-        <nav class="breadcrumbs w-full py-5">
-            <salla-breadcrumb></salla-breadcrumb>
-        </nav>     
+  
         
-        
-        <div class="min-h-screen flex flex-col items-center bg-gray-100">
-            <div class="flex flex-wrap justify-center lg:justify-between p-10 w-full max-w-7xl">
+        <div class="min-h-screen flex flex-col items-center ">
+            <div class="flex flex-wrap justify-center lg:justify-between p-4 lg:p-10 w-full max-w-7xl">
                 <!-- Image Section -->
                 <div class="w-full lg:w-1/2 mb-6 lg:mb-0 flex justify-center">
                     <img src="{{ product.image.url }}" alt="{{ product.name }}"
@@ -99,17 +95,34 @@
                 </div>
         
                 <!-- Details Section -->
-                <div class="w-full lg:w-1/2 bg-gradient-to-t from-zinc-800 to-black rounded-lg p-8 text-white shadow-2xl">
+                <div class="w-full  lg:pt-5 lg:w-1/2 bg-gradient-to-t from-zinc-800 to-black rounded-3xl p-8 lg:p-8 text-white shadow-3xl flex flex-col justify-center">
                     <!-- Title and Description -->
                     <div class="mb-6">
-                        <h1 class="text-4xl font-bold mb-4">{{ product.name }}</h1>
-                        <p class="text-lg leading-relaxed">{{ product.description }}</p>
+                        <h1 class="text-3xl lg:text-4xl font-bold mb-4">{{ product.name }}</h1>
+                        <p class="text-base lg:text-lg leading-relaxed">
+                            {% set product_desc = product.description|replace({"&nbsp;":"\n"}) %}
+                            {% if product.has_read_more %}
+                                <article class="article article--main relative leading-8 overflow-hidden transition-all max-h-0 duration-300 py-4"
+                                    id="more-content" style="max-height:5.25rem">
+                                    {{ product_desc|raw }}
+                                </article>
+        
+                                <!-- Read More Button -->
+                                <a id="btn-show-more" class="link--primary inline-block mt-2 cursor-pointer">
+                                    {{ trans('pages.products.read_more') }}
+                                </a>
+                            {% else %}
+                                <article class="article--main pb-1">
+                                    {{ product_desc|raw }}
+                                </article>
+                            {% endif %}
+                        </p>
                     </div>
         
                     <!-- Price and Call to Actions -->
                     <div class="flex items-center justify-between mb-6">
                         <div
-                            class="text-4xl font-bold text-white p-4 bg-gradient-to-t from-black to-zinc-800 rounded-lg flex gap-2 items-end">
+                            class="text-3xl lg:text-4xl font-bold text-white p-4 bg-gradient-to-t from-black to-zinc-800 rounded-lg flex gap-2 items-end">
                             {{ product.price }}
                             <p class="text-sm">ريال</p>
                         </div>
@@ -119,26 +132,19 @@
                     <salla-product-options options="{{ product.options }}" product-id="{{ product.id }}"></salla-product-options>
                     {% endif %}
         
-                    <!-- Buttons -->
-                    <div class="flex gap-4">
-         
-        <a href=""></a>
-
-                        <salla-mini-checkout-widget                      
- language="ar" store-id="{{store.id  }}" api="https://api.salla.dev/store/v1/" outline="" form-selector="form.product-form" class="s-add-product-button-mini-checkout s-mini-checkout hide-scroll hydrated">
-                            
-                            
-                            <div slot=""      class=" s-fast-checkout-button  text-2xl font-semibold text-white p-3 px-6 bg-gradient-to-t from-black to-zinc-800 rounded-lg hover:bg-black transition-all">
-اطلب الان
-
+                    <!-- Buttons Section -->
+                    <div class="flex flex-col sm:flex-row gap-4 scale-90 md:scale-100">
+                        <salla-mini-checkout-widget
+                            language="ar" store-id="{{store.id}}" api="https://api.salla.dev/store/v1/" outline=""
+                            form-selector="form.product-form" class="s-add-product-button-mini-checkout s-mini-checkout hide-scroll hydrated bg-gradient-to-t from-black to-zinc-800">
+                            <div slot="widget-label"
+                                class="s-fast-checkout-button text-xl lg:text-2xl font-semibold text-white p-3 px-6 bg-gradient-to-t from-black to-zinc-800 rounded-lg hover:bg-black transition-all mt-4">
+                                اطلب الان
                             </div>
-                      </salla-mini-checkout-widget>
-
-
-
-
-
-                        <button class="text-2xl font-semibold text-white p-3 px-6 bg-gradient-to-t from-black to-zinc-800 rounded-lg hover:bg-black transition-all">
+                        </salla-mini-checkout-widget>
+        
+                        <button
+                            class="text-xl lg:text-2xl font-semibold text-white p-3 px-6 bg-gradient-to-t from-black to-zinc-800 rounded-lg hover:bg-black transition-all">
                             عرضها
                         </button>
                     </div>
@@ -146,16 +152,16 @@
                     <!-- Additional Info Section -->
                     <div class="border-t-2 border-main/50 my-6 pt-4 flex items-center gap-4">
                         <div class="flex items-center gap-4">
-                            <div class="text-2xl font-semibold text-white p-3 bg-gradient-to-t from-black to-zinc-800 rounded-lg">
+                            <div class="text-xl lg:text-2xl font-semibold text-white p-3 bg-gradient-to-t from-black to-zinc-800 rounded-lg">
                                 48h
                             </div>
                             <div style="background-image: url('{{ "images/icons/a1.svg" | asset }}');"
-                                class="w-24 h-14 bg-no-repeat bg-contain bg-center">
+                                class="w-16 lg:w-24 h-10 lg:h-14 bg-no-repeat bg-contain bg-center">
                             </div>
-                            
+        
                             <salla-add-product-button class="bg-transparent pt-[10px]"
                                 product-id="{{ product.id }}" product-status="{{ product.status }}" product-type="{{ product.type }}">
-                                <div class="w-52 h-14 bg-no-repeat bg-contain bg-center"
+                                <div class="w-40 lg:w-52 h-10 lg:h-14 bg-no-repeat bg-contain bg-center"
                                     style="background-image: url('{{ "images/icons/addtocart.svg" | asset }}');">
                                 </div>
                             </salla-add-product-button>
@@ -168,34 +174,11 @@
             <salla-offer></salla-offer>
         </div>
         
-        
-        <div class="flex flex-col items-start md:flex-row" id="product-{{ product.id }}">
-         
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-        </div>
+     
      </div>
 
-    {# Comments Area #}
-    <salla-comments item-id="{{product.id}}" type="product"></salla-comments>
-    
-    {# Similar Products Area #}
-    <div class="container">
-        <salla-products-slider source="related" source-value="{{product.id}}" block-title="{{trans('pages.products.similar_products')}}" display-all-url></salla-products-slider>
-    </div>
+   
+  
 {% endblock %}
 
 {% block scripts %}
