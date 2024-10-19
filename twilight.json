@@ -883,30 +883,6 @@
                     "maxLength": 5
                 }
             ]
-        },
-        {
-            "key": "b5039bbc-3b4c-4fe3-b727-a1817dd74e95",
-            "title": "NavVar",
-            "icon": "sicon-ul",
-            "path": "home.nav",
-            "fields": [
-                {
-                    "id": "nav",
-                    "type": "items",
-                    "format": "dropdown-list",
-                    "label": "nav",
-                    "description": null,
-                    "labelHTML": null,
-                    "icon": "sicon-keyboard_arrow_down",
-                    "selected": [],
-                    "options": [],
-                    "source": "Pages",
-                    "multichoice": true,
-                    "searchable": true,
-                    "required": false,
-                    "value": []
-                }
-            ]
         }
     ],
     "support_url": "https://ahmedmansour.vercel.app/",
