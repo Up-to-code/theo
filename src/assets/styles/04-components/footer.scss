@@ -27,7 +27,7 @@
   }
 
   .footer-is-light & {
-    @apply bg-gray-50 text-gray-700;
+    @apply bg-gray-50 text-gray-500;
 
     .store-footer__inner {
       @apply bg-gray-100 border-b-gray-200;
@@ -42,8 +42,13 @@
     }
   }
 }
-
+footer div span p {
+  font-size: 12px;
+  line-height: 1.5;
+  color: #fff !important;
+  margin-bottom: 0;
+}
 
 .copyright-text p{
-  @apply text-gray-700;
+  @apply text-gray-100;
 }
