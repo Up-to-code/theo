@@ -94,6 +94,13 @@
   >
   
   
+  {% for item in {{theme.settings.get('navbar')}} %}
+     
+
+  <div>
+    {{ item.title }}
+  </div>
+  {% endfor %}
  
     <!-- Navigation Item: الرئيسية -->
     <li class="">
