@@ -123,11 +123,23 @@
             "type": "string",
             "format": "color",
             "inputType": "color",
-            "label": "لو نالقامه السفليه",
+            "label": "لون نالقامه السفليه",
             "description": null,
             "labelHTML": null,
             "icon": "sicon-format-fill",
             "value": "#ffffff",
+            "required": false
+        },
+        {
+            "id": "footer_font_color",
+            "type": "string",
+            "format": "color",
+            "inputType": "color",
+            "label": "لون خط نالقامه السفليه",
+            "description": null,
+            "labelHTML": null,
+            "icon": "sicon-format-fill",
+            "value": "#000000",
             "required": false
         },
         {
