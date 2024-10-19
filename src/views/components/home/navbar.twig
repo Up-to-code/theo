@@ -1,7 +1,5 @@
 
-{% for item in items %}
-    
-{% endfor %}
+
 
 
 <nav class="w-max px-4 h-[48px] bg-opacity-90 mt-5">
@@ -13,6 +11,21 @@
       background-position: center;
     "
     >
+    
+    
+    {% for item in component.nav %}
+    
+        <div>
+            <a href="{{item.url}}"> 
+              <li class="lg:hidden text-sm font-bold" {{item.attrs}}>
+                {{ item.title }}
+             
+              </li>
+              </a>
+        </div>
+
+
+{% endfor %}
       <!-- Navigation Item: الرئيسية -->
       <li class="">
         <a
