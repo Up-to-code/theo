@@ -867,7 +867,7 @@
                             "type": "string",
                             "format": "url",
                             "inputType": "url",
-                            "label": "URL",
+                            "label": "الرابط",
                             "description": null,
                             "labelHTML": null,
                             "placeholder": "e.g. https://salla.sa",
