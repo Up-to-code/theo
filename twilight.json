@@ -71,6 +71,85 @@
             "maxLength": 5
         },
         {
+            "id": "line",
+            "type": "static",
+            "format": "line",
+            "label": "Line",
+            "icon": "sicon-minus"
+        },
+        {
+            "id": "footer_links",
+            "type": "collection",
+            "format": "collection",
+            "label": "القامه السفليه الروابط",
+            "description": null,
+            "labelHTML": null,
+            "item_label": null,
+            "icon": "sicon-list-add",
+            "fields": [
+                {
+                    "id": "footer_links.icon",
+                    "type": "string",
+                    "format": "icon",
+                    "label": "الايقونه",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-user-circle",
+                    "value": "sicon-facebook",
+                    "required": false
+                },
+                {
+                    "id": "footer_links.url",
+                    "type": "string",
+                    "format": "url",
+                    "inputType": "url",
+                    "label": "الرابط",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": "e.g. https://salla.sa",
+                    "icon": "sicon-link",
+                    "value": null,
+                    "required": false,
+                    "minLength": 6,
+                    "maxLength": "500"
+                }
+            ],
+            "value": [],
+            "minLength": 1,
+            "maxLength": 5
+        },
+        {
+            "id": "footer_color",
+            "type": "string",
+            "format": "color",
+            "inputType": "color",
+            "label": "لو نالقامه السفليه",
+            "description": null,
+            "labelHTML": null,
+            "icon": "sicon-format-fill",
+            "value": "#ffffff",
+            "required": false
+        },
+        {
+            "id": "footer_logo",
+            "type": "string",
+            "format": "image",
+            "label": "القامه السفليه الشعار",
+            "description": null,
+            "labelHTML": null,
+            "placeholder": "e.g. https://hostname.com/image.png",
+            "icon": "sicon-image",
+            "value": null,
+            "required": false
+        },
+        {
+            "id": "line_1",
+            "type": "static",
+            "format": "line",
+            "label": "Line 1",
+            "icon": "sicon-minus"
+        },
+        {
             "type": "boolean",
             "icon": "sicon-toggle-off",
             "label": "وضع عمودي للمنتجات في مربع المنتجات الثابتة في الصفحة الرئيسية",
