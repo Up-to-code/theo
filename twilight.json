@@ -830,6 +830,13 @@
                     "value": []
                 }
             ]
+        },
+        {
+            "key": "53aa05eb-73ba-4aa0-9215-bb3da71a1bd1",
+            "title": "nav",
+            "icon": "sicon-center",
+            "path": "home.navbar",
+            "fields": []
         }
     ],
     "support_url": "https://ahmedmansour.vercel.app/",
