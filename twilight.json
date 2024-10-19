@@ -891,10 +891,10 @@
             "path": "home.nav",
             "fields": [
                 {
-                    "id": "dropdown_list",
+                    "id": "nav",
                     "type": "items",
                     "format": "dropdown-list",
-                    "label": "Dropdown List",
+                    "label": "nav",
                     "description": null,
                     "labelHTML": null,
                     "icon": "sicon-keyboard_arrow_down",
