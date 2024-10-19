@@ -883,6 +883,13 @@
                     "maxLength": 5
                 }
             ]
+        },
+        {
+            "key": "b5039bbc-3b4c-4fe3-b727-a1817dd74e95",
+            "title": "NavVar",
+            "icon": "sicon-ul",
+            "path": "home.nav",
+            "fields": []
         }
     ],
     "support_url": "https://ahmedmansour.vercel.app/",
