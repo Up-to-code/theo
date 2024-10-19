@@ -1,0 +1,10 @@
+{% for item in component.nav %}
+      <div>
+        <a href="{{item.url}}"> 
+          <li class="lg:hidden text-sm font-bold" {{item.attrs}}>
+            {{ item.title }}
+            {{item.slug}}
+          </li>
+          </a>
+      </div>
+{% endfor %}
