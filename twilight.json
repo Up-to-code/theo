@@ -841,7 +841,7 @@
                     "id": "collection",
                     "type": "collection",
                     "format": "collection",
-                    "label": "Collection",
+                    "label": "nav",
                     "description": "الروابط",
                     "labelHTML": null,
                     "item_label": null,
