@@ -20,3 +20,10 @@
 footer >p{
   color: white !important;
 }
+
+.hoverNav:hover{
+  @apply bg-gradient-to-t from-main/40 to-yellow-500
+}
+.activeNav{
+  @apply bg-gradient-to-t from-main/40 to-yellow-500
+}

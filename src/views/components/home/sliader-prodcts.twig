@@ -1,179 +1,253 @@
-<div class="container relative p-10">
-    <!-- Navigation Buttons -->
-    <button 
-        id="prevBtn" 
-        class="absolute left-5 top-1/2 transform -translate-y-1/2 z-10 text-white flex flex-col items-center transition-opacity duration-300"
-        aria-label="Previous slide"
-    >
-        <div class="w-12 h-12 rounded-full flex items-center justify-center">
-            <img 
-                src="{{ 'images/icons/button2.svg' | asset }}" 
-                alt="السابق" 
-                class="h-12 w-12"
+<!-- Container with RTL support -->
+<div class="container relative p-4 md:p-10" dir="rtl">
+  <!-- Main slider container -->
+  <div class="swiper product-slider">
+    <div class="swiper-wrapper">
+      {% for product in component.products %}
+      <div class="swiper-slide">
+        <a href="{{ product.url }}" class="product-card">
+          <div class="product-content">
+            <div class="product-image-container">
+              {% if product.image.url %}
+              <img 
+                src="{{ product.image.url }}" 
+                alt="{{ product.image.alt|default('Product image') }}" 
+                class="product-image"
                 loading="lazy"
-            >
-        </div>
-        <span class="text-sm mt-2">السابق</span>
-    </button>
-
-    <button 
-        id="nextBtn" 
-        class="absolute right-5 top-1/2 transform -translate-y-1/2 z-10 text-white flex flex-col items-center transition-opacity duration-300"
-        aria-label="Next slide"
-    >
-        <div class="w-12 h-12 rounded-full flex items-center justify-center">
-            <img 
-                src="{{ 'images/icons/button1.svg' | asset }}" 
-                alt="التالي" 
-                class="w-12 h-12"
-                loading="lazy"
-            >
-        </div>
-        <span class="text-sm mt-2">المزيد</span>
-    </button>
-
-    <!-- Slider Container -->
-    <div class="overflow-hidden px-16">
-        <div 
-            id="slider" 
-            class="grid gap-4 sm:gap-6 grid-cols-2 md:grid-cols-3 grid-rows-2 transition-transform duration-300 ease-in-out"
-            style="min-height: 600px"
-        >
-            {% for product in component.products %}
-            <a 
-                href="{{ product.url }}" 
-                class="slider-item block transform transition-all duration-300 ease-in-out"
-                {% if not loop.first %}loading="lazy"{% endif %}
-            >
-                <div class="flex flex-col items-center justify-center h-full">
-                    <div class="w-full">
-                        <div class="bg-zinc-900 w-full aspect-square rounded-lg flex justify-center items-center shadow-lg overflow-hidden">
-                            {% if product.image.url %}
-                            <img 
-                                src="{{ product.image.url }}" 
-                                alt="{{ product.image.alt|default('Product image') }}" 
-                                class="w-full h-full object-contain"
-                                {% if not loop.first %}loading="lazy"{% endif %}
-                                onerror="this.onerror=null; this.src='{{ 'images/placeholder.svg' | asset }}'"
-                            >
-                            {% else %}
-                            <img 
-                                src="{{ 'images/placeholder.svg' | asset }}" 
-                                alt="Placeholder" 
-                                class="w-12 h-12"
-                            >
-                            {% endif %}
-                        </div>
-                        <div class="bg-gradient-to-t from-black to-zinc-800 rounded-xl px-4 py-2 mt-2 text-end w-full ">
-                            <p class="text-white font-semibold flex items-center  gap-1">
-                                <b class="font-bold text-xl">{{ product.price }}</b>
-
-                                <span class="text-sm">ريال</span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </a>
-            {% endfor %}
-        </div>
+                onerror="this.onerror=null; this.src='{{ 'images/placeholder.svg' | asset }}'"
+              >
+              {% else %}
+              <img 
+                src="{{ 'images/placeholder.svg' | asset }}" 
+                alt="Placeholder" 
+                class="placeholder-image"
+              >
+              {% endif %}
+            </div>
+            <div class="price-tag">
+              <p class="price-text">
+                <b class="amount">{{ product.price }}</b>
+                <span class="currency">ريال</span>
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
+      {% endfor %}
     </div>
+    
+    <!-- Navigation Buttons -->
+    <button class="nav-button prev" aria-label="Previous slide">
+      <div class="nav-button-inner">
+        <img src="{{ 'images/icons/button2.svg' | asset }}" alt="السابق" loading="lazy">
+      </div>
+    </button>
+
+    <button class="nav-button next" aria-label="Next slide">
+      <div class="nav-button-inner">
+        <img src="{{ 'images/icons/button1.svg' | asset }}" alt="التالي" loading="lazy">
+      </div>
+    </button>
+  </div>
 </div>
 
+<!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/10.0.4/swiper-bundle.min.css">
+
+<!-- Swiper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/10.0.4/swiper-bundle.min.js"></script>
 
 <script>
-(() => {
-    // Constants
-    const MOBILE_ITEMS = 4;
-    const DESKTOP_ITEMS = 6;
-    const TABLET_BREAKPOINT = 768;
-    const ANIMATION_DURATION = 300;
+// Wait for DOM content to be fully loaded
+window.addEventListener('load', initializeSwiper);
 
-    // Cache DOM elements
-    const slider = document.getElementById('slider');
-    const nextBtn = document.getElementById('nextBtn');
-    const prevBtn = document.getElementById('prevBtn');
+function initializeSwiper() {
+  // Initialize Swiper with configuration
+  const swiper = new Swiper('.product-slider', {
+    // Basic Configuration
+    direction: 'horizontal',
+    dir: 'rtl', // RTL support
     
-    // State
-    let currentSlide = 0;
-    let isAnimating = false;
+    // Grid Configuration
+    grid: {
+      rows: 2,
+      fill: 'row'
+    },
     
-    // Utility functions
-    const getItemsPerSlide = () => window.innerWidth < TABLET_BREAKPOINT ? MOBILE_ITEMS : DESKTOP_ITEMS;
+    // Responsive Breakpoints
+    breakpoints: {
+      // Mobile Layout
+      320: {
+        slidesPerView: 2,
+        grid: { rows: 2 },
+        spaceBetween: 12
+      },
+      // Desktop Layout
+      768: {
+        slidesPerView: 3,
+        grid: { rows: 2 },
+        spaceBetween: 24
+      }
+    },
     
-    const debounce = (func, wait) => {
-        let timeout;
-        return function executedFunction(...args) {
-            const later = () => {
-                clearTimeout(timeout);
-                func(...args);
-            };
-            clearTimeout(timeout);
-            timeout = setTimeout(later, wait);
-        };
-    };
-
-    const updateSliderVisibility = () => {
-        if (isAnimating) return;
-        
-        const items = slider.querySelectorAll('.slider-item');
-        const totalSlides = Math.ceil(items.length / getItemsPerSlide());
-        
-        items.forEach((item, index) => {
-            const isInCurrentSlide = index >= currentSlide * getItemsPerSlide() && 
-                                   index < (currentSlide + 1) * getItemsPerSlide();
-            
-            item.style.opacity = isInCurrentSlide ? '1' : '0';
-            item.style.transform = isInCurrentSlide ? 'scale(1)' : 'scale(0.95)';
-            
-            // Use setTimeout to handle display none after fade out
-            if (!isInCurrentSlide) {
-                setTimeout(() => {
-                    if (!isInCurrentSlide) item.style.display = 'none';
-                }, ANIMATION_DURATION);
-            } else {
-                item.style.display = 'block';
-            }
-        });
-        
-        // Update button states
-        prevBtn.classList.toggle('opacity-50', currentSlide === 0);
-        prevBtn.classList.toggle('cursor-not-allowed', currentSlide === 0);
-        nextBtn.classList.toggle('opacity-50', currentSlide >= totalSlides - 1);
-        nextBtn.classList.toggle('cursor-not-allowed', currentSlide >= totalSlides - 1);
-    };
-
-    const handleSlideChange = (direction) => {
-        if (isAnimating) return;
-        
-        const items = slider.querySelectorAll('.slider-item');
-        const totalSlides = Math.ceil(items.length / getItemsPerSlide());
-        
-        if (direction === 'next' && currentSlide < totalSlides - 1) {
-            isAnimating = true;
-            currentSlide++;
-            updateSliderVisibility();
-            setTimeout(() => { isAnimating = false; }, ANIMATION_DURATION);
-        } else if (direction === 'prev' && currentSlide > 0) {
-            isAnimating = true;
-            currentSlide--;
-            updateSliderVisibility();
-            setTimeout(() => { isAnimating = false; }, ANIMATION_DURATION);
-        }
-    };
-
-    // Event Listeners
-    nextBtn.addEventListener('click', () => handleSlideChange('next'));
-    prevBtn.addEventListener('click', () => handleSlideChange('prev'));
+    // Navigation Configuration
+    navigation: {
+      nextEl: '.nav-button.next',
+      prevEl: '.nav-button.prev',
+    },
     
-    // Debounced resize handler
-    const handleResize = debounce(() => {
-        currentSlide = 0;
-        updateSliderVisibility();
-    }, 250);
-
-    window.addEventListener('resize', handleResize);
+    // Performance & UX Settings
+    speed: 400,
+    threshold: 10,
+    touchRatio: 1,
+    touchAngle: 45,
+    grabCursor: true,
     
-    // Initialize
-    document.addEventListener('DOMContentLoaded', updateSliderVisibility);
-})();
+    // Accessibility Settings
+    a11y: {
+      prevSlideMessage: 'Previous slides',
+      nextSlideMessage: 'Next slides',
+      firstSlideMessage: 'First slide group',
+      lastSlideMessage: 'Last slide group',
+    },
+    
+    // Enable Keyboard Navigation
+    keyboard: {
+      enabled: true
+    }
+  });
+}
 </script>
+
+<style>
+/* Base Container Styles */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Product Card Styles */
+.product-card {
+  display: block;
+  height: 100%;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-2px);
+}
+
+.product-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 0.5rem;
+}
+
+/* Product Image Styles */
+.product-image-container {
+  background-color: #18181b;
+  aspect-ratio: 1;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.placeholder-image {
+  width: 3rem;
+  height: 3rem;
+}
+
+/* Price Tag Styles */
+.price-tag {
+  background: linear-gradient(to top, #000000, #27272a);
+  border-radius: 0.75rem;
+  padding: 0.5rem 1rem;
+  margin-top: 0.5rem;
+}
+
+.price-text {
+  color: white;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.25rem;
+}
+
+.amount {
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+
+.currency {
+  font-size: 0.875rem;
+}
+
+/* Navigation Button Styles */
+.nav-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.nav-button.prev {
+  left: -1.5rem;
+}
+
+.nav-button.next {
+  right: -1.5rem;
+}
+
+.nav-button-inner {
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.nav-button-inner:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* Swiper Specific Styles */
+.swiper-slide {
+  height: calc((100% - 1rem) / 2) !important;
+}
+
+@media (min-width: 768px) {
+  .nav-button-inner {
+    width: 3rem;
+    height: 3rem;
+  }
+  
+  .swiper-slide {
+    height: calc((100% - 1.5rem) / 2) !important;
+  }
+}
+
+/* RTL Specific Adjustments */
+[dir="rtl"] .nav-button.next {
+  transform: translateY(-50%) rotate(90deg);
+}
+
+[dir="rtl"] .nav-button.prev {
+  transform: translateY(-50%) rotate(90deg);
+}
+</style>

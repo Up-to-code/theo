@@ -43,39 +43,7 @@
   </div>
 -->
   {# Main Nav #}
-  <div id="mainnav" class="main-nav-container shadow-default bg-white">
-    <div class="inner bg-inherit">
-      <div class="container">
-        <div class="flex items-stretch justify-between relative">
-          <div class="flex items-center">
-            <a
-              class="lg:hidden mburger mburger--collapse leading-none rtl:ml-4 ltr:mr-4"
-              href="#mobile-menu"
-              aria-label="Open-menu"
-            >
-              <i class="sicon-menu text-primary text-2xl"></i>
-            </a>
-            <a class="navbar-brand" href="{{ store.url }}">
-              <img
-                fetchpriority="high"
-                width="100%"
-                height="100%"
-                loading="eager"
-                src="{{ store.logo }}"
-                alt="{{ store.name }} logo"
-              />
-              {% if is_page('index') %}
-              <h1 class="sr-only">{{ store.name }}</h1>
-              {% else %}
-              <h2 class="sr-only">{{ store.name }}</h2>
-              {% endif %}
-            </a>
-            <custom-main-menu></custom-main-menu>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+
 
 
 
@@ -83,40 +51,107 @@
 
 
 
-<nav class="w-max px-4 h-[48px] bg-opacity-90 mt-5">
-  <ul
-    class="flex rounded-full text-white overflow-hidden h-full"
-    style="
-    background-image: url('{{ 'images/Calque_1.svg' | asset }}');
-    background-size: cover;
-    background-position: center;
-  "
-  >
-  
-  
-  {% for item in {{theme.settings.get('navbar')}} %}
+
+</header>
+
+
+{% for item in theme.settings.get('navbar') %}
      
 
   <div>
     {{ item.title }}
   </div>
   {% endfor %}
+
+
+
+  <div  class="flex justify-center flex-col gap-3"> 
+
+{#   #}
+<div class="flex items-center container">
+ 
+</div>
+  <div class="flex items-center mx-5 space-x-4 rtl:space-x-reverse"> 
+    {% if user.type == 'user' %}
+    <salla-user-menu avatar-only relative-dropdown></salla-user-menu>
+    {% else %}
+    <button
+      class="header-btn p-2 rounded-md  focus:outline-none focus:ring-2 focus:ring-gray-500"
+      aria-label="Login"
+      onclick="salla.event.dispatch('login::open')"
+    >
+    <div class="flex items-center justify-center">
+      <img
+        src="{{ 'images/icons/user.png' | asset }}"
+        alt="User Icon"
+        class="w-6 h-6"
+        loading="lazy"
+      >
+    </div>
+    
+    </button>
+    {% endif %}
+    
+    <salla-cart-summary class="ml-4 rtl:ml-[unset] rtl:mr-4">
+      <i
+        slot="icon"
+        class="sicon-shopping-bag text-white text-2xl"
+        style="
+          position: relative;
+          bottom: -3px;
+          left: -3px;
+        "
+      ></i>
+    </salla-cart-summary>
+  </div>
+
+
+
+
+ <nav class="w-max px-4 h-[48px] bg-opacity-90 "> 
+  <ul
+    class="flex rounded-xl w-max text-white overflow-hidden h-full"
+    style="
+    background-image: url('{{ 'images/Calque_1.svg' | asset }}');
+    background-size: cover;
+    background-position: center;
+  "
+  >
+
+  
+  
+  
  
     <!-- Navigation Item: الرئيسية -->
+    {% if is_home %}
     <li class="">
       <a
-        href="#"
-        class="px-5 py-2 h-12 flex items-center justify-center bg-gradient-to-t from-main/40 to-yellow-500 transition-all duration-300 ease-in-out transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+        href="{{store.url}}"
+        class="activeNav px-5 py-2 h-12 flex items-center justify-center hoverNav transition-all duration-300 ease-in-out transform  focus:outline-none "
       >
         <p class="leading-none text-base font-semibold">الرئيسية</p>
       </a>
     </li>
+    {% else %}
+      
+    <li class="">
+      <a
+        href="{{store.url}}"
+        class="px-5 py-2 h-12 flex items-center justify-center hoverNav transition-all duration-300 ease-in-out transform  focus:outline-none "
+      >
+        <p class="leading-none text-base font-semibold">الرئيسية</p>
+      </a>
+    </li>
+    
+    {% endif %}
+    
+
 
     <!-- Navigation Item: الوحدات -->
     <li class="mx-2">
       <a
         href="#"
-        class="px-5 py-2 h-12 flex items-center justify-center transition-all duration-300 ease-in-out transform hover:scale-110 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 rounded-full"
+        class=" hoverNav px-5 py-2 h-12 flex items-center justify-center transition-all duration-300 ease-in-out transform focus:outline-none focus:ring-2 focus:ring-gray-500 "
       >
         <p class="leading-none text-base font-semibold">الوحدات</p>
       </a>
@@ -126,9 +161,9 @@
     <li class="mx-2">
       <a
         href="#"
-        class="px-5 py-2 h-12 flex items-center justify-center transition-all duration-300 ease-in-out transform hover:scale-110 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 rounded-full"
+        class=" hoverNav px-5 py-2 h-12 flex items-center justify-center transition-all duration-300 ease-in-out transform focus:outline-none focus:ring-2 focus:ring-gray-500 "
       >
-        <p class="leading-none text-base font-semibold">عروض</p>
+        <p class="leading-none text-base font-semibold">الوحدات</p>
       </a>
     </li>
 
@@ -136,9 +171,9 @@
     <li class="mx-2">
       <a
         href="#"
-        class="px-5 py-2 h-12 flex items-center justify-center transition-all duration-300 ease-in-out transform hover:scale-110 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 rounded-full"
+        class=" hoverNav px-5 py-2 h-12 flex items-center justify-center transition-all duration-300 ease-in-out transform focus:outline-none focus:ring-2 focus:ring-gray-500 "
       >
-        <p class="leading-none text-base font-semibold">من نحن</p>
+        <p class="leading-none text-base font-semibold">الوحدات</p>
       </a>
     </li>
 
@@ -146,44 +181,15 @@
     <li class="mx-2">
       <a
         href="#"
-        class="px-5 py-2 h-12 flex items-center justify-center transition-all duration-300 ease-in-out transform hover:scale-110 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 rounded-full"
+        class=" hoverNav px-5 py-2 h-12 flex items-center justify-center transition-all duration-300 ease-in-out transform focus:outline-none focus:ring-2 focus:ring-gray-500 "
       >
-        <p class="leading-none text-base font-semibold">تحت الطلب</p>
+        <p class="leading-none text-base font-semibold">الوحدات</p>
       </a>
     </li>
   </ul>
 </nav>
-</header>
-
-<div>
-  <div class="flex items-center">
-    {% if user.type=='user' %}
-    <salla-user-menu avatar-only relative-dropdown></salla-user-menu>
-    {% else %}
-    <button
-      class="header-btn"
-      aria-label="user-icon"
-      onclick="salla.event.dispatch('login::open')"
-    >
-      <i class="header-btn__icon sicon-user-circle"></i>
-    </button>
-    {% endif %}
-    <salla-cart-summary class="ml-4 rtl:ml-[unset] rtl:mr-4">
-      <i
-        slot="icon"
-        class="sicon-shopping-bag text-white text-2xl mt-2"
-        style="
-          position: relative;
-          /* margin-top: 86px; */
-          bottom: -3px;
-          left: -3px;
-        "
-      ></i>
-    </salla-cart-summary>
   </div>
-</div>
 
- 
 
 
 
