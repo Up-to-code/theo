@@ -966,6 +966,13 @@
                     "value": []
                 }
             ]
+        },
+        {
+            "key": "551032dd-1688-44a0-9440-5ec5142024a7",
+            "title": "شعار في المنتصف",
+            "icon": "sicon-image1",
+            "path": "home.logo",
+            "fields": []
         }
     ],
     "support_url": "https://ahmedmansour.vercel.app/",
