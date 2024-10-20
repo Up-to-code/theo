@@ -1,92 +1,102 @@
 <div class="container relative p-10 ">
-    <!-- Left Navigation Button -->
-    <div class="absolute left-5 top-1/2 transform -translate-y-1/2 flex items-center flex-col justify-center">
-        <button class=" rounded-full text-white">
-        <img src="{{ 'images/icons/button2.svg' | asset }}" alt="ريال" class="w-12 h-12 text-white"> 
-        </button>
-        <span class="text-white text-sm mt-2 block">السابق</span>
-    </div>
-
-    <!-- Right Navigation Button -->
-
-    <div class="absolute right-5 top-1/2 transform -translate-y-1/2 flex items-center flex-col justify-center">
-        <button class=" rounded-full text-white">
-        <img src="{{ 'images/icons/button.svg' | asset }}" alt="ريال" class="w-12 h-12 text-white">
-        </button>
-        <span class="text-white text-sm mt-2 block">المزيد</span>
-    </div>
-  
-    <!-- Grid Layout for Cards -->
-    <div class="flex flex-wrap gap-4 justify-around items-center max-w-3xl m-auto">
-        <!-- Single Card -->
-        <div class="text-center md ">
-            <div class="bg-zinc-900 w-60 h-60 rounded-lg flex justify-center items-center shadow-lg">
-                <img src="{{ 'images/camra.svg' | asset }}" alt="ريال" class="w-8 h-8 text-white">
-            </div>
-            <div class="bg-gradient-to-t from-black to-zinc-800 rounded-xl px-4 py-2 mt-2 text-start">
-                <p class="text-white   font-semibold"><b class=" font-bold text-xl">
-                    90
-                </b> ريال</p>
-            </div>
+    <!-- Navigation Buttons -->
+    <button id="prevBtn" class="absolute left-5 top-1/2 transform -translate-y-1/2 z-10 text-white flex flex-col items-center">
+        <div class="w-12 h-12 bg-black bg-opacity-50 rounded-full flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
         </div>
-        {% for item in component.products %}
-        <a href="{{item.url}}">
-            <div class="text-center md ">
-                <div class="bg-zinc-900 w-60 h-60 rounded-lg flex justify-center items-center shadow-lg">
-                    <img src="{{item.image.url}}" alt="ريال" class="  h-full text-white ">
+        <span class="text-sm mt-2">السابق</span>
+    </button>
+
+    <button id="nextBtn" class="absolute right-5 top-1/2 transform -translate-y-1/2 z-10 text-white flex flex-col items-center">
+        <div class="w-12 h-12 bg-black bg-opacity-50 rounded-full flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+        </div>
+        <span class="text-sm mt-2">المزيد</span>
+    </button>
+
+    <!-- Slider Container -->
+    <div class="overflow-hidden px-16">
+        <div id="slider" class="grid gap-6 grid-cols-2 md:grid-cols-3 grid-rows-2 transition-transform duration-300 ease-in-out">
+            {% for product in component.products %}
+            <a href="{{ product.url }}" class="slider-item block">
+                <div class="flex flex-col items-center justify-center gap-5">
+                        <div class="text-center md ">
+                    <div class="bg-zinc-900 w-60 h-60 rounded-lg flex justify-center items-center shadow-lg">
+                        <img src="{{product.image.url}}" alt="{{item.image.alt}}" class="w-full h-full object-cover">
+                    </div>
+                    <div class="bg-gradient-to-t from-black to-zinc-800 rounded-xl px-4 py-2 mt-2 text-start max-w-60">
+                        <p class="text-white   font-semibold"><b class=" font-bold text-xl">
+                            {{ product.price }}
+                        </b> ريال</p>
+                    </div>
+                </div>  
                 </div>
-                <div class="bg-gradient-to-t from-black to-zinc-800 rounded-xl px-4 py-2 mt-2 text-start">
-                    <p class="text-white   font-semibold"><b class=" font-bold text-xl">
-                        {{ item.price }}
-                    </b> ريال</p>
-                </div>
-            </div>
+          
             </a>
-        {% endfor %}
-  
-        <div class="text-center md ">
-            <div class="bg-zinc-900 w-60 h-60 rounded-lg flex justify-center items-center shadow-lg">
-                <img src="{{ 'images/camra.svg' | asset }}" alt="ريال" class="w-8 h-8 text-white">
-            </div>
-            <div class="bg-gradient-to-t from-black to-zinc-800 rounded-xl px-4 py-2 mt-2 text-start">
-                <p class="text-white   font-semibold"><b class=" font-bold text-xl">
-                    90
-                </b> ريال</p>
-            </div>
+            {% endfor %}
         </div>
-        <div class="text-center md ">
-            <div class="bg-zinc-900 w-60 h-60 rounded-lg flex justify-center items-center shadow-lg">
-                <img src="{{ 'images/camra.svg' | asset }}" alt="ريال" class="w-8 h-8 text-white">
-            </div>
-            <div class="bg-gradient-to-t from-black to-zinc-800 rounded-xl px-4 py-2 mt-2 text-start">
-                <p class="text-white   font-semibold"><b class=" font-bold text-xl">
-                    90
-                </b> ريال</p>
-            </div>
-        </div>
-        <div class="text-center md ">
-            <div class="bg-zinc-900 w-60 h-60 rounded-lg flex justify-center items-center shadow-lg">
-                <img src="{{ 'images/camra.svg' | asset }}" alt="ريال" class="w-8 h-8 text-white">
-            </div>
-            <div class="bg-gradient-to-t from-black to-zinc-800 rounded-xl px-4 py-2 mt-2 text-start">
-                <p class="text-white   font-semibold"><b class=" font-bold text-xl">
-                    90
-                </b> ريال</p>
-            </div>
-        </div>
- 
     </div>
+
+ 
 </div>
 
- {# <p>
-    {% set products = component.products|map((product) => product) %}
-    {% for item in products %}
-         <p>
-            {{ item.name }}
-         </p>
-    {% endfor %}
-    {% for item in component.products %}
-    {{ item.name }}
-    {% endfor %}
- </p> #}
- 
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const slider = document.getElementById('slider');
+    const nextBtn = document.getElementById('nextBtn');
+    const prevBtn = document.getElementById('prevBtn');
+    
+    let currentSlide = 0;
+    let itemsPerSlide = window.innerWidth < 768 ? 4 : 6; // 4 items on mobile, 6 on desktop
+    
+    function updateSliderVisibility() {
+        const items = slider.querySelectorAll('.slider-item');
+        const totalSlides = Math.ceil(items.length / itemsPerSlide);
+        
+        items.forEach((item, index) => {
+            const isInCurrentSlide = index >= currentSlide * itemsPerSlide && 
+                                   index < (currentSlide + 1) * itemsPerSlide;
+            
+            // Use opacity for smooth transitions
+            item.style.opacity = isInCurrentSlide ? '1' : '0';
+            item.style.display = isInCurrentSlide ? 'block' : 'none';
+        });
+        
+        // Update button states
+        prevBtn.classList.toggle('opacity-50', currentSlide === 0);
+        prevBtn.classList.toggle('cursor-not-allowed', currentSlide === 0);
+        nextBtn.classList.toggle('opacity-50', currentSlide >= totalSlides - 1);
+        nextBtn.classList.toggle('cursor-not-allowed', currentSlide >= totalSlides - 1);
+    }
+    
+    function handleResize() {
+        itemsPerSlide = window.innerWidth < 768 ? 4 : 6;
+        currentSlide = 0;
+        updateSliderVisibility();
+    }
+    
+    nextBtn.addEventListener('click', () => {
+        const items = slider.querySelectorAll('.slider-item');
+        const totalSlides = Math.ceil(items.length / itemsPerSlide);
+        
+        if (currentSlide < totalSlides - 1) {
+            currentSlide++;
+            updateSliderVisibility();
+        }
+    });
+    
+    prevBtn.addEventListener('click', () => {
+        if (currentSlide > 0) {
+            currentSlide--;
+            updateSliderVisibility();
+        }
+    });
+    
+    window.addEventListener('resize', handleResize);
+    handleResize();
+});
+</script>

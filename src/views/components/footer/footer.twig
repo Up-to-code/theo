@@ -1,13 +1,17 @@
-{% set color= {{ theme.settings.get('footer_font_color') }} %}
+{% set color =  theme.settings.get('footer_font_color') %}
+{% set bg =  theme.settings.get('footer_color') %}
 
 <footer class="store-footer">
 	<div 
 	  style="
-		background-color: {{ theme.settings.get('footer_color') }};
-		color: {{ color}} ;
+		background-color: {{ bg }} ;
+		color: {{ color }} ;
 	  "
 	  class="min-h-16 flex flex-col md:flex-row justify-between px-5 py-6"
 	>
+
+
+
 	  {# footer_links #}
 	  {% if theme.settings.get('footer_links') %}
 		{% set footer_links = theme.settings.get('footer_links') %}
@@ -15,17 +19,35 @@
 		  {% for link in footer_links %}
 			<a 
 			  href="{{ link.url }}" 
-			  class="text-lg  p-6 relative"
+			  class="text-lg  p-6 relative flex items-center justify-center rounded-full"
 			  style="
-			  color: {{ color}} ;
+			   background-color: {{ color}} ;
 			  "
 			 
 			>
-			  <i class="{{ link.icon }} text-primary"></i>
+			  <i class="{{ link.icon  }} absolute  "
+			    style="
+				  color: {{ bg }} ;
+				  background-color: {{ color }} ;
+				"
+			  
+			 
+			  ></i>
 			</a>
 		  {% endfor %}
 		</div>
 	  {% endif %}
+	  <div>
+		{% if theme.settings.get('footer_logo') %}
+			<a href="{{ store.url }}" class="flex items-center">
+				<img
+					src="{{ theme.settings.get('footer_logo') }}"
+					alt="{{ store.name }} logo"
+					class="h-12 w-auto"
+				/>
+		</a>
+		{% endif %}
+	</div>
 	</div>
   
 	<!-- Bottom Section -->
