@@ -1,69 +1,138 @@
-<div class="container relative p-10 ">
+<div class="container relative p-10">
     <!-- Navigation Buttons -->
-    <button id="prevBtn" class="absolute left-5 top-1/2 transform -translate-y-1/2 z-10 text-white flex flex-col items-center">
-        <div class="w-12 h-12 bg-black bg-opacity-50 rounded-full flex items-center justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-            </svg>
+    <button 
+        id="prevBtn" 
+        class="absolute left-5 top-1/2 transform -translate-y-1/2 z-10 text-white flex flex-col items-center transition-opacity duration-300"
+        aria-label="Previous slide"
+    >
+        <div class="w-12 h-12 rounded-full flex items-center justify-center">
+            <img 
+                src="{{ 'images/icons/button2.svg' | asset }}" 
+                alt="السابق" 
+                class="h-12 w-12"
+                loading="lazy"
+            >
         </div>
         <span class="text-sm mt-2">السابق</span>
     </button>
 
-    <button id="nextBtn" class="absolute right-5 top-1/2 transform -translate-y-1/2 z-10 text-white flex flex-col items-center">
-        <div class="w-12 h-12 bg-black bg-opacity-50 rounded-full flex items-center justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-            </svg>
+    <button 
+        id="nextBtn" 
+        class="absolute right-5 top-1/2 transform -translate-y-1/2 z-10 text-white flex flex-col items-center transition-opacity duration-300"
+        aria-label="Next slide"
+    >
+        <div class="w-12 h-12 rounded-full flex items-center justify-center">
+            <img 
+                src="{{ 'images/icons/button1.svg' | asset }}" 
+                alt="التالي" 
+                class="w-12 h-12"
+                loading="lazy"
+            >
         </div>
         <span class="text-sm mt-2">المزيد</span>
     </button>
 
     <!-- Slider Container -->
     <div class="overflow-hidden px-16">
-        <div id="slider" class="grid gap-6 grid-cols-2 md:grid-cols-3 grid-rows-2 transition-transform duration-300 ease-in-out">
+        <div 
+            id="slider" 
+            class="grid gap-4 sm:gap-6 grid-cols-2 md:grid-cols-3 grid-rows-2 transition-transform duration-300 ease-in-out"
+            style="min-height: 600px"
+        >
             {% for product in component.products %}
-            <a href="{{ product.url }}" class="slider-item block">
-                <div class="flex flex-col items-center justify-center gap-5">
-                        <div class="text-center md ">
-                    <div class="bg-zinc-900 w-60 h-60 rounded-lg flex justify-center items-center shadow-lg">
-                        <img src="{{product.image.url}}" alt="{{item.image.alt}}" class="w-full h-full object-cover">
+            <a 
+                href="{{ product.url }}" 
+                class="slider-item block transform transition-all duration-300 ease-in-out"
+                {% if not loop.first %}loading="lazy"{% endif %}
+            >
+                <div class="flex flex-col items-center justify-center h-full">
+                    <div class="w-full">
+                        <div class="bg-zinc-900 w-full aspect-square rounded-lg flex justify-center items-center shadow-lg overflow-hidden">
+                            {% if product.image.url %}
+                            <img 
+                                src="{{ product.image.url }}" 
+                                alt="{{ product.image.alt|default('Product image') }}" 
+                                class="w-full h-full object-contain"
+                                {% if not loop.first %}loading="lazy"{% endif %}
+                                onerror="this.onerror=null; this.src='{{ 'images/placeholder.svg' | asset }}'"
+                            >
+                            {% else %}
+                            <img 
+                                src="{{ 'images/placeholder.svg' | asset }}" 
+                                alt="Placeholder" 
+                                class="w-12 h-12"
+                            >
+                            {% endif %}
+                        </div>
+                        <div class="bg-gradient-to-t from-black to-zinc-800 rounded-xl px-4 py-2 mt-2 text-end w-full ">
+                            <p class="text-white font-semibold flex items-center  gap-1">
+                                <b class="font-bold text-xl">{{ product.price }}</b>
+
+                                <span class="text-sm">ريال</span>
+                            </p>
+                        </div>
                     </div>
-                    <div class="bg-gradient-to-t from-black to-zinc-800 rounded-xl px-4 py-2 mt-2 text-start max-w-60">
-                        <p class="text-white   font-semibold"><b class=" font-bold text-xl">
-                            {{ product.price }}
-                        </b> ريال</p>
-                    </div>
-                </div>  
                 </div>
-          
             </a>
             {% endfor %}
         </div>
     </div>
-
- 
 </div>
 
+
 <script>
-document.addEventListener('DOMContentLoaded', function() {
+(() => {
+    // Constants
+    const MOBILE_ITEMS = 4;
+    const DESKTOP_ITEMS = 6;
+    const TABLET_BREAKPOINT = 768;
+    const ANIMATION_DURATION = 300;
+
+    // Cache DOM elements
     const slider = document.getElementById('slider');
     const nextBtn = document.getElementById('nextBtn');
     const prevBtn = document.getElementById('prevBtn');
     
+    // State
     let currentSlide = 0;
-    let itemsPerSlide = window.innerWidth < 768 ? 4 : 6; // 4 items on mobile, 6 on desktop
+    let isAnimating = false;
     
-    function updateSliderVisibility() {
+    // Utility functions
+    const getItemsPerSlide = () => window.innerWidth < TABLET_BREAKPOINT ? MOBILE_ITEMS : DESKTOP_ITEMS;
+    
+    const debounce = (func, wait) => {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    };
+
+    const updateSliderVisibility = () => {
+        if (isAnimating) return;
+        
         const items = slider.querySelectorAll('.slider-item');
-        const totalSlides = Math.ceil(items.length / itemsPerSlide);
+        const totalSlides = Math.ceil(items.length / getItemsPerSlide());
         
         items.forEach((item, index) => {
-            const isInCurrentSlide = index >= currentSlide * itemsPerSlide && 
-                                   index < (currentSlide + 1) * itemsPerSlide;
+            const isInCurrentSlide = index >= currentSlide * getItemsPerSlide() && 
+                                   index < (currentSlide + 1) * getItemsPerSlide();
             
-            // Use opacity for smooth transitions
             item.style.opacity = isInCurrentSlide ? '1' : '0';
-            item.style.display = isInCurrentSlide ? 'block' : 'none';
+            item.style.transform = isInCurrentSlide ? 'scale(1)' : 'scale(0.95)';
+            
+            // Use setTimeout to handle display none after fade out
+            if (!isInCurrentSlide) {
+                setTimeout(() => {
+                    if (!isInCurrentSlide) item.style.display = 'none';
+                }, ANIMATION_DURATION);
+            } else {
+                item.style.display = 'block';
+            }
         });
         
         // Update button states
@@ -71,32 +140,40 @@ document.addEventListener('DOMContentLoaded', function() {
         prevBtn.classList.toggle('cursor-not-allowed', currentSlide === 0);
         nextBtn.classList.toggle('opacity-50', currentSlide >= totalSlides - 1);
         nextBtn.classList.toggle('cursor-not-allowed', currentSlide >= totalSlides - 1);
-    }
-    
-    function handleResize() {
-        itemsPerSlide = window.innerWidth < 768 ? 4 : 6;
-        currentSlide = 0;
-        updateSliderVisibility();
-    }
-    
-    nextBtn.addEventListener('click', () => {
-        const items = slider.querySelectorAll('.slider-item');
-        const totalSlides = Math.ceil(items.length / itemsPerSlide);
+    };
+
+    const handleSlideChange = (direction) => {
+        if (isAnimating) return;
         
-        if (currentSlide < totalSlides - 1) {
+        const items = slider.querySelectorAll('.slider-item');
+        const totalSlides = Math.ceil(items.length / getItemsPerSlide());
+        
+        if (direction === 'next' && currentSlide < totalSlides - 1) {
+            isAnimating = true;
             currentSlide++;
             updateSliderVisibility();
-        }
-    });
-    
-    prevBtn.addEventListener('click', () => {
-        if (currentSlide > 0) {
+            setTimeout(() => { isAnimating = false; }, ANIMATION_DURATION);
+        } else if (direction === 'prev' && currentSlide > 0) {
+            isAnimating = true;
             currentSlide--;
             updateSliderVisibility();
+            setTimeout(() => { isAnimating = false; }, ANIMATION_DURATION);
         }
-    });
+    };
+
+    // Event Listeners
+    nextBtn.addEventListener('click', () => handleSlideChange('next'));
+    prevBtn.addEventListener('click', () => handleSlideChange('prev'));
     
+    // Debounced resize handler
+    const handleResize = debounce(() => {
+        currentSlide = 0;
+        updateSliderVisibility();
+    }, 250);
+
     window.addEventListener('resize', handleResize);
-    handleResize();
-});
+    
+    // Initialize
+    document.addEventListener('DOMContentLoaded', updateSliderVisibility);
+})();
 </script>
