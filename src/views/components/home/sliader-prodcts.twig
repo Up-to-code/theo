@@ -9,19 +9,19 @@
           <div class="product-content">
             <div class="product-image-container">
               {% if product.image.url %}
-              <img 
-                src="{{ product.image.url }}" 
-                alt="{{ product.image.alt|default('Product image') }}" 
+              <img
+                src="{{ product.image.url }}"
+                alt="{{ product.image.alt|default('Product image') }}"
                 class="product-image"
                 loading="lazy"
                 onerror="this.onerror=null; this.src='{{ 'images/placeholder.svg' | asset }}'"
-              >
+              />
               {% else %}
-              <img 
-                src="{{ 'images/placeholder.svg' | asset }}" 
-                alt="Placeholder" 
+              <img
+                src="{{ 'images/placeholder.svg' | asset }}"
+                alt="Placeholder"
                 class="placeholder-image"
-              >
+              />
               {% endif %}
             </div>
             <div class="price-tag">
@@ -35,219 +35,171 @@
       </div>
       {% endfor %}
     </div>
-    
-    <!-- Navigation Buttons -->
-    <button class="nav-button prev" aria-label="Previous slide">
-      <div class="nav-button-inner">
-        <img src="{{ 'images/icons/button2.svg' | asset }}" alt="السابق" loading="lazy">
-      </div>
-    </button>
-
-    <button class="nav-button next" aria-label="Next slide">
-      <div class="nav-button-inner">
-        <img src="{{ 'images/icons/button1.svg' | asset }}" alt="التالي" loading="lazy">
-      </div>
-    </button>
   </div>
+  <!-- Navigation Buttons -->
+  <button class="nav-button prev z-10" aria-label="Previous slide">
+    <div class="nav-button-inner">
+      <img
+        src="{{ 'images/icons/button2.svg' | asset }}"
+        alt="السابق"
+        loading="lazy"
+      />
+    </div>
+  </button>
+
+  <button class="nav-button next z-10" aria-label="Next slide">
+    <div class="nav-button-inner">
+      <img
+        src="{{ 'images/icons/button1.svg' | asset }}"
+        alt="التالي"
+        loading="lazy"
+      />
+    </div>
+  </button>
 </div>
 
-<!-- Swiper CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/10.0.4/swiper-bundle.min.css">
-
-<!-- Swiper JS -->
+<!-- Swiper CSS and JS -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/10.0.4/swiper-bundle.min.css"
+/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/10.0.4/swiper-bundle.min.js"></script>
 
 <script>
-// Wait for DOM content to be fully loaded
-window.addEventListener('load', initializeSwiper);
+  window.addEventListener("load", initializeSwiper);
 
-function initializeSwiper() {
-  // Initialize Swiper with configuration
-  const swiper = new Swiper('.product-slider', {
-    // Basic Configuration
-    direction: 'horizontal',
-    dir: 'rtl', // RTL support
-    
-    // Grid Configuration
-    grid: {
-      rows: 2,
-      fill: 'row'
-    },
-    
-    // Responsive Breakpoints
-    breakpoints: {
-      // Mobile Layout
-      320: {
-        slidesPerView: 2,
-        grid: { rows: 2 },
-        spaceBetween: 12
+  function initializeSwiper() {
+    const swiper = new Swiper(".product-slider", {
+      direction: "horizontal",
+      rtl: true,
+      grid: { rows: 2, fill: "row" },
+      breakpoints: {
+        320: { slidesPerView: 2, grid: { rows: 2 }, spaceBetween: 12 },
+        768: { slidesPerView: 3, grid: { rows: 2 }, spaceBetween: 24 },
       },
-      // Desktop Layout
-      768: {
-        slidesPerView: 3,
-        grid: { rows: 2 },
-        spaceBetween: 24
-      }
-    },
-    
-    // Navigation Configuration
-    navigation: {
-      nextEl: '.nav-button.next',
-      prevEl: '.nav-button.prev',
-    },
-    
-    // Performance & UX Settings
-    speed: 400,
-    threshold: 10,
-    touchRatio: 1,
-    touchAngle: 45,
-    grabCursor: true,
-    
-    // Accessibility Settings
-    a11y: {
-      prevSlideMessage: 'Previous slides',
-      nextSlideMessage: 'Next slides',
-      firstSlideMessage: 'First slide group',
-      lastSlideMessage: 'Last slide group',
-    },
-    
-    // Enable Keyboard Navigation
-    keyboard: {
-      enabled: true
-    }
-  });
-}
+      navigation: { nextEl: ".nav-button.next", prevEl: ".nav-button.prev" },
+      speed: 400,
+      grabCursor: true,
+      keyboard: { enabled: true },
+    });
+  }
 </script>
 
 <style>
-/* Base Container Styles */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
+  /* Base Container Styles */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
 
-/* Product Card Styles */
-.product-card {
-  display: block;
-  height: 100%;
-  transition: transform 0.3s ease;
-}
+  /* Product Card Styles */
+  .product-card {
+    display: block;
+    height: 100%;
+    transition: transform 0.3s ease;
+  }
+  .product-card:hover {
+    transform: translateY(-2px);
+  }
 
-.product-card:hover {
-  transform: translateY(-2px);
-}
+  .product-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 0.5rem;
+  }
 
-.product-content {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  gap: 0.5rem;
-}
+  /* Product Image Styles */
+  .product-image-container {
+    background-color: #18181b;
+    aspect-ratio: 1;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
 
-/* Product Image Styles */
-.product-image-container {
-  background-color: #18181b;
-  aspect-ratio: 1;
-  border-radius: 0.5rem;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-}
-
-.product-image {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.placeholder-image {
-  width: 3rem;
-  height: 3rem;
-}
-
-/* Price Tag Styles */
-.price-tag {
-  background: linear-gradient(to top, #000000, #27272a);
-  border-radius: 0.75rem;
-  padding: 0.5rem 1rem;
-  margin-top: 0.5rem;
-}
-
-.price-text {
-  color: white;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 0.25rem;
-}
-
-.amount {
-  font-weight: 700;
-  font-size: 1.125rem;
-}
-
-.currency {
-  font-size: 0.875rem;
-}
-
-/* Navigation Button Styles */
-.nav-button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
-  transition: all 0.3s ease;
-}
-
-.nav-button.prev {
-  left: -1.5rem;
-}
-
-.nav-button.next {
-  right: -1.5rem;
-}
-
-.nav-button-inner {
-  width: 2.5rem;
-  height: 2.5rem;
-  background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(4px);
-  border-radius: 9999px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.3s ease;
-}
-
-.nav-button-inner:hover {
-  background-color: rgba(0, 0, 0, 0.7);
-}
-
-/* Swiper Specific Styles */
-.swiper-slide {
-  height: calc((100% - 1rem) / 2) !important;
-}
-
-@media (min-width: 768px) {
-  .nav-button-inner {
+  .product-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .placeholder-image {
     width: 3rem;
     height: 3rem;
   }
-  
-  .swiper-slide {
-    height: calc((100% - 1.5rem) / 2) !important;
+
+  /* Price Tag Styles */
+  .price-tag {
+    background: linear-gradient(to top, #000000, #27272a);
+    border-radius: 0.75rem;
+    padding: 0.5rem 1rem;
+    margin-top: 0.5rem;
   }
-}
 
-/* RTL Specific Adjustments */
-[dir="rtl"] .nav-button.next {
-  transform: translateY(-50%) rotate(90deg);
-}
+  .price-text {
+    color: white;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.25rem;
+  }
 
-[dir="rtl"] .nav-button.prev {
-  transform: translateY(-50%) rotate(90deg);
-}
+  .amount {
+    font-weight: 700;
+    font-size: 1.125rem;
+  }
+  .currency {
+    font-size: 0.875rem;
+  }
+
+  /* Navigation Button Styles */
+  .nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    transition: all 0.3s ease;
+  }
+
+  .nav-button.prev {
+    left: -1.5rem;
+  }
+  .nav-button.next {
+    right: -1.5rem;
+  }
+
+  .nav-button-inner {
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+  }
+
+  .nav-button-inner:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+
+  /* Swiper Specific Styles */
+  .swiper-slide {
+    height: calc((100% - 1rem) / 2) !important;
+  }
+
+  @media (min-width: 768px) {
+    .nav-button-inner {
+      width: 3rem;
+      height: 3rem;
+    }
+    .swiper-slide {
+      height: calc((100% - 1.5rem) / 2) !important;
+    }
+  }
 </style>
