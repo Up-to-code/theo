@@ -992,7 +992,25 @@
             "title": "انواع مخصص",
             "icon": "sicon-shopping-bag2",
             "path": "home.categorie",
-            "fields": []
+            "fields": [
+                {
+                    "id": "categorie",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "categorie",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-keyboard_arrow_down",
+                    "selected": [],
+                    "options": [],
+                    "source": "Categories",
+                    "multichoice": true,
+                    "searchable": true,
+                    "required": false,
+                    "public": true,
+                    "value": []
+                }
+            ]
         }
     ],
     "support_url": "https://ahmedmansour.vercel.app/",
