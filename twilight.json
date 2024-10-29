@@ -1011,6 +1011,13 @@
                     "value": []
                 }
             ]
+        },
+        {
+            "key": "91a7283a-5892-4db9-ba10-255a153204a4",
+            "title": "test",
+            "icon": "sicon-table",
+            "path": "home.test",
+            "fields": []
         }
     ],
     "support_url": "https://ahmedmansour.vercel.app/",
