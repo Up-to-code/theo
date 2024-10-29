@@ -1017,23 +1017,7 @@
             "title": "test",
             "icon": "sicon-table",
             "path": "home.test",
-            "fields": [
-                {
-                    "id": "test",
-                    "type": "items",
-                    "format": "dropdown-list",
-                    "label": "test",
-                    "description": null,
-                    "labelHTML": null,
-                    "icon": "sicon-keyboard_arrow_down",
-                    "selected": [],
-                    "options": [],
-                    "source": "Manual",
-                    "multichoice": true,
-                    "searchable": true,
-                    "required": false
-                }
-            ]
+            "fields": []
         }
     ],
     "support_url": "https://ahmedmansour.vercel.app/",
