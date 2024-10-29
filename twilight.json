@@ -986,6 +986,13 @@
                     "required": true
                 }
             ]
+        },
+        {
+            "key": "5c3ba4ed-bebe-4e89-9e98-65f6258a69bc",
+            "title": "انواع مخصص",
+            "icon": "sicon-shopping-bag2",
+            "path": "home.categorie",
+            "fields": []
         }
     ],
     "support_url": "https://ahmedmansour.vercel.app/",
