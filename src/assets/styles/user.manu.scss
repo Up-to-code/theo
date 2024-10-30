@@ -27,3 +27,7 @@ footer >p{
 .activeNav{
   @apply bg-gradient-to-t from-main/40 to-yellow-500
 }
+
+.text-black > p {
+  color: black !important;
+}
