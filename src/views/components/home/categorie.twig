@@ -1,6 +1,19 @@
-{% for item in component.categorie %}
-<div>
-  <a href="{{ item.url }}" >{{ item.name }}</a>
-  <img src="{{ item.image}}" alt="" />
+<div class="grid grid-cols-2 gap-4 md:grid-cols-3 p-4 my-8">
+  {% for item in component.categorie %}
+    <div class="flex flex-col items-center">
+      <!-- Circular Image with Overlay Text -->
+      <div class="relative w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 rounded-full shadow-lg">
+        <a href="{{ item.url }}" class="relative block w-full h-full">
+          <img src="{{ item.image }}" alt="{{ item.name }}" class="object-cover w-full h-full rounded-full" />
+        </a>
+        
+        <!-- Name Overlay: Centered and Positioned Half Inside, Half Outside the Image -->
+        <div class="absolute inset-x-0 bottom-[-15px] flex items-center justify-center">
+          <div class="text-center text-sm md:text-base lg:text-lg text-white font-bold bg-gradient-to-t from-black to-zinc-800 bg-opacity-80 rounded-full px-4 py-1">
+            <p>{{ item.name }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
 </div>
-{% endfor %}
