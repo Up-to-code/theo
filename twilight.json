@@ -1017,7 +1017,23 @@
             "title": "نص من نحنح",
             "icon": "sicon-align-right",
             "path": "home.desc",
-            "fields": []
+            "fields": [
+                {
+                    "id": "desc",
+                    "type": "string",
+                    "format": "richtext",
+                    "label": "من نحن وصف",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": "Your text here ..",
+                    "icon": "sicon-touch-type",
+                    "value": null,
+                    "multilanguage": false,
+                    "required": false,
+                    "minLength": "30",
+                    "maxLength": 1000
+                }
+            ]
         }
     ],
     "support_url": "https://ahmedmansour.vercel.app/",
