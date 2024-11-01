@@ -1011,6 +1011,13 @@
                     "value": []
                 }
             ]
+        },
+        {
+            "key": "247c1901-c4b6-4c96-ada3-e25c5ad628ec",
+            "title": "نص من نحنح",
+            "icon": "sicon-align-right",
+            "path": "home.desc",
+            "fields": []
         }
     ],
     "support_url": "https://ahmedmansour.vercel.app/",
