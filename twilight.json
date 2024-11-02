@@ -45,6 +45,18 @@
             "required": false
         },
         {
+            "id": "prodcut_bg",
+            "type": "string",
+            "format": "image",
+            "label": "خلفيت صفحه المنتج",
+            "description": null,
+            "labelHTML": null,
+            "placeholder": "e.g. https://hostname.com/image.png",
+            "icon": "sicon-image",
+            "value": null,
+            "required": false
+        },
+        {
             "id": "line_3",
             "type": "static",
             "format": "line",
