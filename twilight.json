@@ -26,6 +26,32 @@
     ],
     "settings": [
         {
+            "id": "line_2",
+            "type": "static",
+            "format": "line",
+            "label": "Line 2",
+            "icon": "sicon-minus"
+        },
+        {
+            "id": "bgindex",
+            "type": "string",
+            "format": "image",
+            "label": "خلفيت الصفحه الرءسيه",
+            "description": null,
+            "labelHTML": null,
+            "placeholder": "e.g. https://hostname.com/image.png",
+            "icon": "sicon-image",
+            "value": null,
+            "required": false
+        },
+        {
+            "id": "line_3",
+            "type": "static",
+            "format": "line",
+            "label": "Line 3",
+            "icon": "sicon-minus"
+        },
+        {
             "id": "navbar",
             "type": "collection",
             "format": "collection",
