@@ -34,3 +34,245 @@ footer >p{
 .s-design-before{
   @apply  hidden
 }
+
+
+
+//////////////////////
+.s-search {
+  &-inline {
+    display: flex;
+    flex-direction: column; // Stack elements vertically
+    background-color: #1c1c1e; // Dark background
+    border-radius: 35px; // Increased border-radius for a softer feel
+    transition: background-color 0.3s; // Smooth background transition
+  }
+
+  &-container {
+    position: relative; // Keep relative positioning for absolute children
+
+    &-open {
+      background-color: #2c2c2e; // Background for open state
+      border: 1px solid #3a3a3c;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); // Shadow for depth
+      transition: all 0.3s ease; // Smooth transition
+    }
+  }
+
+  &-input {
+    background-color: transparent; // Blend with container
+    color: #ffffff; // White text
+    border: none;
+    outline: none;
+    padding: 8px; // Adjust padding for a snug fit
+    height: 40px; // Input height set to 40px
+    width: 100%;
+    border-radius: 35px; // Rounded corners
+    transition: border-color 0.3s;
+
+    &::placeholder {
+      color: #a8a8a8; // Placeholder color
+    }
+
+    &:focus {
+      border: 1px solid #f0c14b; // Gold border on focus
+      background-color: #262627; // Slightly darker background on focus
+    }
+  }
+
+  &-icon {
+    color: #ffffff; // White icon color
+    margin-right: 8px; // Adjusted margin for spacing
+    cursor: pointer;
+    transition: color 0.3s;
+    display: none;
+
+    &:hover {
+      color: #f0c14b; // Change color on hover
+    }
+  }
+
+  &-spinner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff; // Spinner color
+  }
+
+  &-spinner-loader {
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top: 2px solid #ffffff; // White spinner top
+    border-radius: 50%;
+    width: 16px; // Smaller spinner for a more minimal look
+    height: 16px; // Smaller height
+    animation: spin 1s linear infinite; // Spin animation
+  }
+
+  &-results {
+    position: absolute; // Position results absolutely
+    top: 100%; // Position results below the input
+    left: 0; // Align to the left of the container
+    right: 0; // Align to the right of the container
+    background-color: #2c2c2e; // Results background
+    color: #ffffff; // White text
+    max-height: 250px; // Set max height for scroll
+    overflow-y: auto; // Enable vertical scroll if necessary
+    border-radius: 0 0 8px 8px; // Rounded corners at the bottom
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); // Subtle shadow effect
+
+    &::-webkit-scrollbar {
+      width: 8px; // Width of the scrollbar
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #1c1c1e; // Background of the scrollbar track
+      border-radius: 10px; // Rounded corners for track
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #f0c14b; // Color of the scrollbar handle
+      border-radius: 10px; // Rounded corners for handle
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: #d0b45c; // Darker gold on hover
+    }
+
+    &-item {
+      padding: 8px; // Reduced padding for results
+      border-radius: 5px; // Rounded for each result item
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: rgba(240, 193, 75, 0.1); // Light gold on hover
+      }
+    }
+  }
+
+  &-no-results {
+    color: #a8a8a8; // Grey for no results
+    text-align: center;
+    padding: 12px; // Adjusted padding
+    font-style: italic; // Italics for no results message
+  }
+
+  &-container-open {
+    transition: all 0.3s ease; // Smooth transition when opening
+  }
+
+  &-product {
+    &-image-container {
+      overflow: hidden;
+      border-radius: 5px;
+      margin-bottom: 10px; // Space between items
+      transition: transform 0.3s; // Add transition for hover effect
+
+      &:hover {
+        transform: scale(1.05); // Scale image on hover
+      }
+    }
+
+    &-image {
+      width: 100%;
+      height: auto;
+      border-radius: 5px; // Rounded corners for images
+    }
+
+    &-details {
+      display: flex;
+      flex-direction: column;
+      padding: 8px; // Adjusted padding for product details
+    }
+
+    &-title {
+      font-size: 14px; // Smaller title size
+      color: #ffffff; // White title
+      margin-bottom: 4px; // Reduced margin
+      font-weight: bold; // Bold for title
+    }
+
+    &-price {
+      font-size: 12px; // Smaller price size
+      color: #f0c14b; // Light gold for prices
+    }
+  }
+}
+
+// Spin animation
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.s-search-product:hover {
+  background: #1c1c1e; // Background color for product item on hover
+}
+/* Main wrapper */
+.s-user-settings-wrapper {
+  /* Add your wrapper styles here */
+}
+
+/* Settings section container */
+.s-user-settings-section {
+  /* Add your section styles here */
+  @apply bg-gradient-to-t from-zinc-800 to-black ;
+  
+
+}
+
+/* Settings title */
+.s-user-settings-title {
+  /* Add your title styles here */
+}
+
+/* Settings subtitle */
+.s-user-settings-subtitle {
+  /* Add your subtitle styles here */
+}
+
+/* Settings action */
+.s-user-settings-action {
+  /* Add your action styles here */
+}
+
+/* Example with some common styles applied */
+.s-user-settings-wrapper {
+  padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.s-user-settings-section {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border : none
+ 
+}
+
+.s-user-settings-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ebebeb;
+  margin-bottom: 1rem;
+}
+
+.s-user-settings-subtitle {
+  font-size: 1rem;
+  color: #666666;
+  margin-bottom: 0.5rem;
+}
+
+.s-user-settings-action {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.s-user-settings-action:hover {
+  background-color: #0056b3;
+}
