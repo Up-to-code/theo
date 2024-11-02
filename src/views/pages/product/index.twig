@@ -19,13 +19,7 @@
 {% extends "layouts.master" %}
 {% block content %}
     <div class="container px-2.5 ms:px-5 mb-10 py-5">
-        <!-- Custom promotional banner -->
-        <div class="promo-banner bg-primary text-white py-4 px-6 rounded-md mb-6 text-center">
-            <h2>{{ trans('store.promo_title') }}</h2>
-            <p>{{ trans('store.promo_message') }}</p>
-            <a href="{{ category.url }}" class="btn btn-secondary mt-3">{{ trans('store.shop_now') }}</a>
-        </div>
-
+  
         <!-- Breadcrumbs -->
         <nav class="breadcrumbs w-full py-5">
             <salla-breadcrumb></salla-breadcrumb>
@@ -57,9 +51,15 @@
 
                 {% hook 'product:index.items.start' %}
                 <div class="flex min-h-screen">
-                    <salla-products-list class="flex-1 min-w-0 overflow-auto" source="{{ page.slug }}" source-value="{{ page.id }}" {{ filters ? 'filters-Results' : '' }}>
+                    <salla-products-list 
+                    product-card-component="{{ product_card_component }}"
+                    class="flex-1 min-w-0 overflow-auto" source="{{ page.slug }}" source-value="{{ page.id }}" {{ filters ? 'filters-Results' : '' }}>
                     </salla-products-list>
                 </div>
+                {% for item in products  %}
+          <p>{{ item.name }}</p>
+                {% endfor %}
+                
                 {% hook 'product:index.items.end' %}
             </div>
         </div>
