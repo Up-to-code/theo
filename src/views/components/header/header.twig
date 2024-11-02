@@ -55,14 +55,6 @@
 </header>
 
 
-{% for item in theme.settings.get('navbar') %}
-     
-
-  <div>
-    {{ item.title }}
-  </div>
-  {% endfor %}
-
 
 
   <div  class="flex justify-center flex-col gap-3"> 
@@ -71,51 +63,54 @@
 <div class="flex items-center container">
  
 </div>
-  <div class="flex items-center mx-5 space-x-4 rtl:space-x-reverse"> 
-    {% if user.type == 'user' %}
-    <salla-user-menu avatar-only relative-dropdown></salla-user-menu>
-    {% else %}
-    <button
-      class="header-btn p-2 rounded-md  focus:outline-none focus:ring-2 focus:ring-gray-500"
-      aria-label="Login"
-      onclick="salla.event.dispatch('login::open')"
-    >
-    <div class="flex items-center justify-center">
-      <img
-        src="{{ 'images/icons/user.png' | asset }}"
-        alt="User Icon"
-        class="w-6 h-6"
-        loading="lazy"
+ 
+
+
+
+
+ <nav class=" mt-5  flex justify-between w-full px-4"> 
+  <div>
+    <div class="flex items-center mx-5 space-x-4 rtl:space-x-reverse"> 
+      {% if user.type == 'user' %}
+      <salla-user-menu avatar-only relative-dropdown></salla-user-menu>
+      {% else %}
+      <button
+        class="header-btn p-2 rounded-md  focus:outline-none focus:ring-2 focus:ring-gray-500"
+        aria-label="Login"
+        onclick="salla.event.dispatch('login::open')"
       >
+      <div class="flex items-center justify-center">
+        <img
+          src="{{ 'images/icons/usera.png' | asset }}"
+          alt="User Icon"
+          class="w-6 h-6"
+          loading="lazy"
+        >
+      </div>
+      
+      </button>
+      {% endif %}
+      
+      <salla-cart-summary class="ml-4 rtl:ml-[unset] rtl:mr-4">
+        <i
+          slot="icon"
+          class="sicon-shopping-bag text-white text-2xl"
+          style="
+            position: relative;
+            bottom: -3px;
+            left: -3px;
+          "
+        ></i>
+      </salla-cart-summary>
+  
+  
+       
+  <!-- Inline Search Bar Input Field-->
+  <salla-search inline="true" height="50"></salla-search>
+  
     </div>
-    
-    </button>
-    {% endif %}
-    
-    <salla-cart-summary class="ml-4 rtl:ml-[unset] rtl:mr-4">
-      <i
-        slot="icon"
-        class="sicon-shopping-bag text-white text-2xl"
-        style="
-          position: relative;
-          bottom: -3px;
-          left: -3px;
-        "
-      ></i>
-    </salla-cart-summary>
-
-
-     
-<!-- Inline Search Bar Input Field-->
-<salla-search inline="true" height="50"></salla-search>
-
-  </div>
-
-
-
-
- <nav class="w-max px-4 h-[48px] bg-opacity-90 "> 
-  <ul
+    <div class=" h-[48px] bg-opacity-90 flex justify-between">
+ <ul
     class="flex rounded-xl w-max text-white overflow-hidden h-full"
     style="
     background-image: url('{{ 'images/Calque_1.svg' | asset }}');
@@ -153,46 +148,38 @@
     
 
 
-    <!-- Navigation Item: الوحدات -->
+  
+
+    {% for item in theme.settings.get('navbar') %}
     <li class="mx-2">
       <a
-        href="#"
+        href="{{item.url}}"
         class=" hoverNav px-5 py-2 h-12 flex items-center justify-center transition-all duration-300 ease-in-out transform focus:outline-none focus:ring-2 focus:ring-gray-500 "
       >
-        <p class="leading-none text-base font-semibold">الوحدات</p>
+        <p class="leading-none text-base font-semibold">{{ item.title }}</p>
       </a>
     </li>
 
-    <!-- Navigation Item: عروض -->
-    <li class="mx-2">
-      <a
-        href="#"
-        class=" hoverNav px-5 py-2 h-12 flex items-center justify-center transition-all duration-300 ease-in-out transform focus:outline-none focus:ring-2 focus:ring-gray-500 "
-      >
-        <p class="leading-none text-base font-semibold">الوحدات</p>
-      </a>
-    </li>
+ 
+    {% endfor %}
+  
 
-    <!-- Navigation Item: من نحن -->
-    <li class="mx-2">
-      <a
-        href="#"
-        class=" hoverNav px-5 py-2 h-12 flex items-center justify-center transition-all duration-300 ease-in-out transform focus:outline-none focus:ring-2 focus:ring-gray-500 "
-      >
-        <p class="leading-none text-base font-semibold">الوحدات</p>
-      </a>
-    </li>
 
-    <!-- Navigation Item: تحت الطلب -->
-    <li class="mx-2">
-      <a
-        href="#"
-        class=" hoverNav px-5 py-2 h-12 flex items-center justify-center transition-all duration-300 ease-in-out transform focus:outline-none focus:ring-2 focus:ring-gray-500 "
-      >
-        <p class="leading-none text-base font-semibold">الوحدات</p>
-      </a>
-    </li>
-  </ul>
+ 
+  </ul>  
+    </div>
+   
+
+
+
+
+  </div>
+
+ 
+ 
+  <img src="{{ store.logo }}" alt="Logo" class=" ">
+  
+
 </nav>
  <div>
 <!-- Button to open search component-->

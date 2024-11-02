@@ -60,7 +60,7 @@
 
                 {% for item in cart.items %}
                     <form class="mb-5 last:mb-0" onchange="salla.form.onChange('cart.updateItem', event)" id="item-{{ item.id }}">
-                        <section class="cart-item bg-gradient-to-t from-zinc-800 to-black py-5 px-4 md:px-6 lg:px-8 rounded-md mb-5 last:mb-0">
+                        <section class="cart-item bg-gradient-to-t from-zinc-800 to-black py-5 px-4 md:px-6 lg:px-8 rounded-md mb-5 last:mb-0 relative">
                             <input type="hidden" name="id" value="{{ item.id }}">
                                 <div class="md:flex rtl:space-x-reverse md:space-x-12 items-start justify-between mb-8 last:mb-0">
                                     <div class="flex flex-1 rtl:space-x-reverse space-x-4">
