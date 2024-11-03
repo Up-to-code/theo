@@ -57,7 +57,7 @@
             "required": false
         },
         {
-            "id": "khlqbt_almntgat_almstfh",
+            "id": "bg_index",
             "type": "string",
             "format": "image",
             "label": "خلقبت المنتجات المصتفه",
@@ -69,7 +69,7 @@
             "required": false
         },
         {
-            "id": "khlfet__alsht_almstkhdem",
+            "id": "bg_user",
             "type": "string",
             "format": "image",
             "label": "خلفيت  الصحت المستخديم",
