@@ -287,3 +287,43 @@ footer >p{
 .shadow-zin{
     box-shadow: -6px 3px 110px #1c1c1e;
 }
+
+
+
+///////////////////////////////
+/// 
+.s-product-card-entry{
+  width: 262px;
+   border-radius: 10px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.0);
+  transition: all 0.3s ease;
+  background: transparent;
+   
+}
+
+.s-product-card-content-footer{
+  display: none;
+  }
+.s-product-card-content{
+  padding: 0px;
+}
+  .s-product-card-content-sub{
+    background: linear-gradient(to top, #000000, #27272a);
+    border-radius: 0.75rem;
+    padding: 0.5rem 1rem;
+    margin-top: 1rem;
+    color: white;
+    
+    }
+.s-product-card-image{
+  width: 262px;
+  height: 262px;
+  background: transparent;
+}
+.s-product-card-content-main{
+  display: none;
+}
+.s-product-card-image img{
+  width: 262px;
+  height: 262px;
+}
