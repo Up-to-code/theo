@@ -125,8 +125,12 @@ theme.settings.get(settingName, default=null) | mixed | get theme setting ex
       background-image: url('{{ theme.settings.get('bgindex') }}'); {% endif %}
        {% if is_page('product.single') %} 
       background-image: url('{{ theme.settings.get('prodcut_bg') }}'); {% endif %}
-      
-      
+       {% if is_page('product.index') %} 
+      background-image: url('{{ theme.settings.get('bg_index') }}'); {% endif %}
+  
+      {% if is_page('customer') %}
+      background-image: url('{{ theme.settings.get('bg_user') }}'); {% endif %}
+
       "
     >
       {% hook 'body:start' %} {% component 'header.header' %} {% block content
