@@ -57,10 +57,93 @@
             "required": false
         },
         {
+            "id": "khlqbt_almntgat_almstfh",
+            "type": "string",
+            "format": "image",
+            "label": "خلقبت المنتجات المصتفه",
+            "description": null,
+            "labelHTML": null,
+            "placeholder": "e.g. https://hostname.com/image.png",
+            "icon": "sicon-image",
+            "value": null,
+            "required": false
+        },
+        {
+            "id": "khlfet__alsht_almstkhdem",
+            "type": "string",
+            "format": "image",
+            "label": "خلفيت  الصحت المستخديم",
+            "description": null,
+            "labelHTML": null,
+            "placeholder": "e.g. https://hostname.com/image.png",
+            "icon": "sicon-image",
+            "value": null,
+            "required": false
+        },
+        {
             "id": "line_3",
             "type": "static",
             "format": "line",
             "label": "Line 3",
+            "icon": "sicon-minus"
+        },
+        {
+            "id": "collection",
+            "type": "collection",
+            "format": "collection",
+            "label": "Collection",
+            "description": null,
+            "labelHTML": null,
+            "item_label": null,
+            "icon": "sicon-list-add",
+            "fields": [
+                {
+                    "id": "collection.string",
+                    "type": "string",
+                    "format": "text",
+                    "label": "String",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": "Placeholder text ..",
+                    "icon": "sicon-format-text-alt",
+                    "value": null,
+                    "multilanguage": false,
+                    "required": false,
+                    "minLength": 6,
+                    "maxLength": 30
+                },
+                {
+                    "id": "collection.url",
+                    "type": "string",
+                    "format": "url",
+                    "inputType": "url",
+                    "label": "URL",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": "e.g. https://salla.sa",
+                    "icon": "sicon-link",
+                    "value": null,
+                    "required": false,
+                    "minLength": 6,
+                    "maxLength": 30
+                }
+            ],
+            "value": [],
+            "minLength": 1,
+            "maxLength": 5
+        },
+        {
+            "id": "line_4",
+            "type": "static",
+            "format": "line",
+            "label": "Line 4",
+            "icon": "sicon-minus"
+        },
+        {
+            "id": "line_5",
+            "type": "static",
+            "format": "line",
+            "label": "Line 5",
             "icon": "sicon-minus"
         },
         {
@@ -358,6 +441,32 @@
             "required": false,
             "value": false,
             "selected": false
+        },
+        {
+            "id": "code",
+            "type": "string",
+            "format": "code",
+            "label": "Code",
+            "description": null,
+            "labelHTML": null,
+            "placeholder": "body { color: green; }",
+            "icon": "sicon-browser-code",
+            "value": null,
+            "required": false
+        },
+        {
+            "id": "checkbox_list",
+            "type": "items",
+            "format": "checkbox-list",
+            "label": "Checkbox List",
+            "description": null,
+            "labelHTML": null,
+            "icon": "sicon-list-check",
+            "selected": [],
+            "options": [],
+            "source": "Manual",
+            "multichoice": true,
+            "required": false
         }
     ],
     "components": [
