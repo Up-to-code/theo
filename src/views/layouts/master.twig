@@ -118,7 +118,7 @@ theme.settings.get(settingName, default=null) | mixed | get theme setting ex
       >.
     </noscript>
     <div
-      class="app-inner flex flex-col min-h-full"
+      class="app-inner flex flex-col min-h-full text-white"
       style="background-size: cover; background-position: center; background-repeat: no-repeat;
       {% if is_page('index') %} 
       
@@ -128,7 +128,7 @@ theme.settings.get(settingName, default=null) | mixed | get theme setting ex
        {% if is_page('product.index') %} 
       background-image: url('{{ theme.settings.get('bg_index') }}'); {% endif %}
   
-      {% if is_page('customer') %}
+      {% if is_page('customer.profile') %}
       background-image: url('{{ theme.settings.get('bg_user') }}'); {% endif %}
 
       "

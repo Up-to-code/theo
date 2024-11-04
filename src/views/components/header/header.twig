@@ -71,6 +71,22 @@
         </button>
         {% endif %}
 
+
+
+        <div>
+          <button
+            class="header-btn p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500"
+            aria-label="Login"
+            onclick="salla.event.dispatch('search::open')"
+            style="
+              position: relative;
+              bottom: -3px;
+              left: -3px;
+            "
+          >
+            <img src="{{ 'images/icons/search.png' | asset }}" alt="Search Icon" class="" loading="lazy" />
+          </button>
+        </div>
         <salla-cart-summary class="ml-4 rtl:ml-[unset] rtl:mr-4">
           <i
             slot="icon"
@@ -79,10 +95,10 @@
           ></i>
         </salla-cart-summary>
 
-        <!-- Inline Search Bar Input Field-->
-        <salla-search inline="true" height="50"></salla-search>
+
       </div>
       <div class="h-[48px] bg-opacity-90 flex justify-between">
+        
         <ul
           class="flex rounded-xl w-max text-white overflow-hidden h-full"
           style="
@@ -125,31 +141,21 @@
           </li>
 
           {% endfor %}
-          <div>
-            <button
-              class="header-btn p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500"
-              aria-label="Login"
-              onclick="salla.event.dispatch('search::open')"
-              style="
-                position: relative;
-                bottom: -3px;
-                left: -3px;
-              "
-            >
-              <i class="sicon-search"></i>
-            </button>
-          </div>
+
         </ul>
+
       </div>
     </div>
 
+    <a href="{{ store.url }}" >
     {% if is_home %}
     <img src="{{ store.logo }}" alt="Logo" class=" " />
     {% else %}
-    <div class="flex items-center justify-center">
+    <div class="flex items</a>-center justify-center">
       <img src="{{ store.logo }}" alt="Logo" class="h-14" />
     </div>
     {% endif %}
+    </a>
   </nav>
   <div>
     <!-- Button to open search component-->
