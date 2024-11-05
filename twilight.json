@@ -88,6 +88,58 @@
             "icon": "sicon-minus"
         },
         {
+            "id": "q_links",
+            "type": "collection",
+            "format": "collection",
+            "label": "q_links",
+            "description": null,
+            "labelHTML": null,
+            "item_label": null,
+            "icon": "sicon-list-add",
+            "fields": [
+                {
+                    "id": "q_links.string_1",
+                    "type": "string",
+                    "format": "text",
+                    "label": "String 1",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": "Placeholder text ..",
+                    "icon": "sicon-format-text-alt",
+                    "value": null,
+                    "multilanguage": false,
+                    "required": false,
+                    "minLength": 6,
+                    "maxLength": 30
+                },
+                {
+                    "id": "q_links.url_1",
+                    "type": "string",
+                    "format": "url",
+                    "inputType": "url",
+                    "label": "URL 1",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": "e.g. https://salla.sa",
+                    "icon": "sicon-link",
+                    "value": null,
+                    "required": false,
+                    "minLength": 6,
+                    "maxLength": 30
+                }
+            ],
+            "value": [],
+            "minLength": 1,
+            "maxLength": 5
+        },
+        {
+            "id": "line_7",
+            "type": "static",
+            "format": "line",
+            "label": "Line 7",
+            "icon": "sicon-minus"
+        },
+        {
             "id": "collection",
             "type": "collection",
             "format": "collection",
