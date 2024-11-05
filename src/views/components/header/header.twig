@@ -45,18 +45,19 @@
   {# Main Nav #}
 </header>
 
-<div class=" flex-col gap-3 pt-4">
+<div class=" flex-col gap-3 pt-2">
   {# #}
   <div class=" container"> 
 
-    <nav class="mt-5 flex justify-between items-center w-full px-4" dir="">
+    <nav class="mt-5 flex justify-between items-center w-full px-4 md:px-1" dir="">
       <!-- Logo on the Left -->
 
       <!-- Mega Menu & User Icons (Right-Aligned) -->
-      <div class="hidden lg:flex items-center space-x-4 space-x-reverse"> <!-- Fix spacing for RTL -->
-        <!-- Mega Menu Button (Desktop Only) -->
-       
-    
+      <div class="flex items-center space-x-4 space-x-reverse"> <!-- Fix spacing for RTL -->
+ 
+    <div class="hidden lg:flex">
+ 
+
         <!-- User Icon -->
         {% if user.type == 'user' %}
         <salla-user-menu avatar-only relative-dropdown></salla-user-menu>
@@ -65,20 +66,34 @@
           <img src="{{ 'images/icons/usera.png' | asset }}" alt="User Icon" class="w-6 h-6" loading="lazy" />
         </button>
         {% endif %}
-    
+    <div class="flex items-center">
+ 
         <!-- Search Icon -->
         <button class="p-2 rounded-md focus:outline-none" onclick="salla.event.dispatch('search::open')">
           <img src="{{ 'images/icons/search.png' | asset }}" alt="Search Icon" loading="lazy" />
-        </button>
-      </div>
+        </button> 
+        <salla-cart-summary class="ml-4 rtl:ml-[unset] rtl:mr-4">
+          <i slot="icon" class="sicon-shopping-bag text-white text-2xl" style="position: relative; bottom: -3px; left: -3px;"></i>
+        </salla-cart-summary>  
     
-      <!-- Drawer Toggle (Mobile Only) -->
-      <button class="lg:hidden text-white focus:outline-none" onclick="toggleDrawer()">
+      </div>
+      </div>
+      <!-- Mega Menu Button (Desktop Only) -->
+      <button class="lg:hidden text-white focus:outline-none " onclick="toggleDrawer()">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
       </button>
+
+      </div>
+     <div>
+      
+ 
     
+ 
+     </div>
+      <!-- Drawer Toggle (Mobile Only) -->
+ 
       <!-- Drawer Overlay and Content (Mobile) -->
       <div id="drawerOverlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50" onclick="closeDrawer()">
         <div class="w-64 bg-dark h-full p-4 shadow-lg transform translate-x-full transition-transform duration-300" id="drawerContent" onclick="event.stopPropagation()">
@@ -129,15 +144,21 @@
 
 
 
+  {% if is_home %}
+  <a href="{{ store.url }}" class="flex items-center scale-75 md:scale-100">
+    <img src="{{ store.logo }}" alt="Logo" class="h-10 md:h-32" />
+  </a>
 
+  {% else %}
+    
       <a href="{{ store.url }}" class="flex items-center scale-75 md:scale-100">
         <img src="{{ store.logo }}" alt="Logo" class="h-10 md:h-24" />
       </a>
-    
+      {% endif %}
     </nav>
         
     <ul
-    class="hidden md:flex rounded-xl w-max text-white overflow-hidden h-full "
+    class="hidden lg:flex rounded-xl w-max text-white overflow-hidden h-full "
     style="
 background-image: url('{{ 'images/Calque_1.svg' | asset }}');
 background-size: cover;
