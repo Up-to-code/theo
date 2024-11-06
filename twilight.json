@@ -91,17 +91,17 @@
             "id": "q_links",
             "type": "collection",
             "format": "collection",
-            "label": "q_links",
+            "label": "الروابط السريعه",
             "description": null,
             "labelHTML": null,
             "item_label": null,
             "icon": "sicon-list-add",
             "fields": [
                 {
-                    "id": "q_links.string_1",
+                    "id": "q_links.title",
                     "type": "string",
                     "format": "text",
-                    "label": "String 1",
+                    "label": "العنوان",
                     "description": null,
                     "labelHTML": null,
                     "placeholder": "Placeholder text ..",
@@ -113,11 +113,11 @@
                     "maxLength": 30
                 },
                 {
-                    "id": "q_links.url_1",
+                    "id": "q_links.url",
                     "type": "string",
                     "format": "url",
                     "inputType": "url",
-                    "label": "URL 1",
+                    "label": "الرابط",
                     "description": null,
                     "labelHTML": null,
                     "placeholder": "e.g. https://salla.sa",
@@ -137,58 +137,6 @@
             "type": "static",
             "format": "line",
             "label": "Line 7",
-            "icon": "sicon-minus"
-        },
-        {
-            "id": "collection",
-            "type": "collection",
-            "format": "collection",
-            "label": "Collection",
-            "description": null,
-            "labelHTML": null,
-            "item_label": null,
-            "icon": "sicon-list-add",
-            "fields": [
-                {
-                    "id": "collection.string",
-                    "type": "string",
-                    "format": "text",
-                    "label": "String",
-                    "description": null,
-                    "labelHTML": null,
-                    "placeholder": "Placeholder text ..",
-                    "icon": "sicon-format-text-alt",
-                    "value": null,
-                    "multilanguage": false,
-                    "required": false,
-                    "minLength": 6,
-                    "maxLength": 30
-                },
-                {
-                    "id": "collection.url",
-                    "type": "string",
-                    "format": "url",
-                    "inputType": "url",
-                    "label": "URL",
-                    "description": null,
-                    "labelHTML": null,
-                    "placeholder": "e.g. https://salla.sa",
-                    "icon": "sicon-link",
-                    "value": null,
-                    "required": false,
-                    "minLength": 6,
-                    "maxLength": 30
-                }
-            ],
-            "value": [],
-            "minLength": 1,
-            "maxLength": 5
-        },
-        {
-            "id": "line_4",
-            "type": "static",
-            "format": "line",
-            "label": "Line 4",
             "icon": "sicon-minus"
         },
         {
