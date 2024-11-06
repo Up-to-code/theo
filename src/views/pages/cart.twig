@@ -250,7 +250,7 @@
 
                         <div class="cart-submit-wrap">
                             {% hook 'cart:submit.start' %}
-                            <salla-button id="cart-submit" loader-position="center" width="wide">
+                            <salla-button id="cart-submit" class="bg-gradient-to-t from-black to-zinc-800 rounded-lg hover:bg-black transition-all flex items-center justify-center py-3 px-6 text-white">
                                 {{ trans('pages.cart.complete_order') }}
                             </salla-button>
                             {% hook 'cart:submit.end' %}

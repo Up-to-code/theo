@@ -33,37 +33,35 @@
 {% endif %}
 
 {% if product.weight or product.has_size_guide %}
-    <section class=" p-5 rounded-md mb-5">
+    <section class="p-5 rounded-md mb-5 bg-zinc-800 text-white">
         {% if product.weight %}
             <div class="center-between {% if product.has_size_guide %} pb-5 mb-5 border-b-[1px] {% endif %}">
-                <b class="form-label rtl:space-x-reverse space-x-1"><i class="sicon-luggage-cart"></i>
+                <b class="form-label rtl:space-x-reverse space-x-1 text-white"><i class="sicon-luggage-cart"></i>
                     <span>{{ trans('pages.products.weight') }}</span></b>
                 <span class="text-sm">{{ product.weight }}</span>
             </div>
         {% endif %}
         {% if product.has_size_guide %}
             <div class="center-between">
-                <b class="form-label rtl:space-x-reverse space-x-1">
+                <b class="form-label rtl:space-x-reverse space-x-1 text-white">
                     <i class="sicon-pencil-ruler"></i>
                     <span> {{ trans('pages.products.size_guides') }} </span>
                 </b>
 
-                <salla-button shape="link" color="primary" class="!p-0 text-sm with-arrow"
+                <salla-button shape="link" color="primary" class="!p-0 text-sm with-arrow text-white"
                               onclick="salla.event.dispatch('size-guide::open', '{{ product.id }}')">
                     {{ trans('pages.products.show_size_guides') }} <i class="sicon-keyboard_arrow_left"></i>
                 </salla-button>
-
             </div>
             <salla-product-size-guide></salla-product-size-guide>
         {% endif %}
     </section>
 {% endif %}
 
-
 {% if product.can_add_note or product.can_upload_file %}
-    <section class=" p-5 rounded-md mb-5">
+    <section class="p-5 rounded-md mb-5 bg-zinc-800 text-white">
         <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start">
-            <label class="form-label">
+            <label class="form-label text-white">
                 <b class="block">
                     {{ trans('pages.products.attachments') }}
                 </b>
@@ -71,7 +69,7 @@
             <div class="mt-1 sm:mt-0 sm:col-span-2 text-end">
                 <div class="flex rtl:space-x-reverse space-x-3">
                     {% if product.can_add_note %}
-                        <button class="btn-tab btn--collapse"
+                        <button class="btn-tab btn--collapse text-white"
                                 type="button"
                                 data-show="note_{{ product.id }}">
                             <i class="font-medium sicon-chat-conversation-alt rtl:ml-1.5 ltr:mr-1.5"></i>
@@ -79,7 +77,7 @@
                         </button>
                     {% endif %}
                     {% if product.can_upload_file %}
-                        <button class="btn-tab btn--collapse"
+                        <button class="btn-tab btn--collapse text-white"
                                 data-show="file_{{ product.id }}"
                                 type="button">
                             <i class="font-medium sicon-paperclip rtl:ml-1.5 ltr:mr-1.5"></i>
@@ -92,7 +90,7 @@
                     <div class="h-0 overflow-hidden opacity-0 is-closed" id="note_{{ product.id }}">
                         <div class="pt-4">
                           <textarea
-                                  class="animated animatedfadeInDown fadeInDown form-input h-16 bg-gray-50 block"
+                                  class="animated animatedfadeInDown fadeInDown form-input h-16 bg-zinc-900 text-white block"
                                   placeholder="{{ trans('pages.products.notes_placeholder') }}"
                                   name="notes"
                                   cols="30"
@@ -102,7 +100,6 @@
                 {% endif %}
 
                 {% if product.can_upload_file %}
-                    {# Notice that "product" is actually cart.items[*], so {product.id} is {item.id} #}
                     <div class="h-0 overflow-hidden opacity-0 is-closed" id="file_{{ product.id }}">
                         <div class="pt-4 px-1">
                             <salla-file-upload
@@ -116,8 +113,8 @@
                                     <span class="product-option-uploader-placholder-icon">
                                         <i class="sicon-camera"></i>
                                     </span>
-                                    <p class="profile-filepond-placholder-text">{{ trans('common.uploader.drag_and_drop') }}</p>
-                                    <span class="filepond--label-action">{{ trans('common.uploader.browse') }}</span>
+                                    <p class="profile-filepond-placholder-text text-white">{{ trans('common.uploader.drag_and_drop') }}</p>
+                                    <span class="filepond--label-action text-white">{{ trans('common.uploader.browse') }}</span>
                                 </div>
                             </salla-file-upload>
                         </div>
