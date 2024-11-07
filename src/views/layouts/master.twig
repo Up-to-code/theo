@@ -128,7 +128,18 @@ theme.settings.get(settingName, default=null) | mixed | get theme setting ex
        {% if is_page('product.index') %} 
       background-image: url('{{ theme.settings.get('bg_index') }}'); {% endif %}
   
-      {% if is_page('customer.profile') %}
+      {% if is_page('customer.profile')  %}
+      background-image: url('{{ theme.settings.get('bg_user') }}'); {% endif %}
+             {% if is_page('customer.notifications')  %}
+      background-image: url('{{ theme.settings.get('bg_user') }}'); {% endif %}
+         
+      {% if is_page('customer.wishlist')  %}
+      background-image: url('{{ theme.settings.get('bg_user') }}'); {% endif %}
+               
+      {% if is_page('customer.orders.index')  %}
+      background-image: url('{{ theme.settings.get('bg_user') }}'); {% endif %}
+         
+      {% if is_page('customer.orders.single')  %}
       background-image: url('{{ theme.settings.get('bg_user') }}'); {% endif %}
 
       "

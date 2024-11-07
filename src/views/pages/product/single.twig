@@ -84,12 +84,33 @@
 {% extends "layouts.master" %}
 {% block content %}
 <div class="container">
- <div>
-    {% for item in theme.settings.get('q_links') %}
-        <a href="{{ item.url }}" class="text-white text-sm">{{ item.title }}</a>
-        
-    {% endfor %}
- </div>
+    <div class="text-white text-sm mx-5 my-4 md:mt-8 flex flex-wrap gap-4">
+        {% for item in theme.settings.get('q_links') %}
+            <a href="{{ item.url }}" class="text-white font-bold rounded-md px-4 py-1 text-sm link-item">{{ item.title }}</a>
+        {% endfor %}
+    </div>
+    
+    <script>
+      // Get all the anchor elements
+      const links = document.querySelectorAll('.link-item');
+      
+      // Get the current page URL
+      const currentUrl = window.location.pathname;
+    
+      // Loop through all the links and check if the href matches the current URL
+      links.forEach(link => {
+        const linkUrl = new URL(link.href).pathname;
+    
+        // If the link's URL matches the current URL, add the gradient class
+        if (linkUrl === currentUrl) {
+          link.classList.add('bg-gradient-to-t', 'from-slate-200/50', 'via-transparent', 'to-slate-300/50');
+        }
+      });
+    </script>
+    
+    
+  
+    
 
 
     <div class="min-h-screen flex flex-col items-center">
