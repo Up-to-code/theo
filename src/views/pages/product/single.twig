@@ -116,9 +116,74 @@
     <div class="min-h-screen flex flex-col items-center">
         <div class="flex flex-wrap justify-center gap-6 md:gap-12 p-2 md:p-4 lg:p-10 w-full max-w-7xl">
             <!-- Image Section -->
-            <div class="mb-6 lg:mb-0 flex justify-center w-full md:w-auto">
-                <img src="{{ product.image.url }}" alt="{{ product.name }}"
-                    class="rounded-lg object-cover shadow-3xl shadow-zin w-full md:w-[394.2903px] h-auto md:h-[576.2704px] max-w-md" />
+            <div class="mb-6 lg:mb-0 flex justify-center w-full md:w-auto md:max-w-1/2">
+    
+               <!-- Slider Container -->
+<div id="main-slider" class="relative w-full h-[500px] max-w-md mx-auto  min-w-[300px] ">
+    <!-- Main Image Display with Fade Transition -->
+    <div id="main-image-container" class="w-full h-full overflow-hidden rounded-lg relative">
+        <img id="main-image" src="{{ product.images[0].url }}" alt="{{ product.images[0].alt }}"
+             class="w-full h-full object-cover transition-opacity duration-500 ease-in-out opacity-100" />
+    </div>
+
+    <!-- Thumbnail Buttons -->
+    <div class="mt-4 flex justify-center gap-3">
+        {% for item in product.images %}
+        <button onclick="updateMainImage('{{ item.url }}', '{{ item.alt }}')"
+                class="w-16 h-16 md:w-20 md:h-20 rounded-lg overflow-hidden border-2 border-transparent hover:border-gray-400 transition-all duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-400">
+            <img src="{{ item.url }}" alt="{{ item.alt }}" class="w-full h-full object-cover" />
+        </button>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- JavaScript for Image Switching with Fade Animation -->
+<script>
+    function updateMainImage(url, alt) {
+        const mainImage = document.getElementById('main-image');
+        
+        // Add fade-out effect
+        mainImage.classList.remove('opacity-100');
+        mainImage.classList.add('opacity-0');
+        
+        // Wait for the fade-out transition to complete before changing the image
+        setTimeout(() => {
+            mainImage.src = url;
+            mainImage.alt = alt;
+            
+            // Add fade-in effect
+            mainImage.classList.remove('opacity-0');
+            mainImage.classList.add('opacity-100');
+        }, 300); // Match this duration with the transition duration
+    }
+</script>
+
+<style>
+    /* Additional Styling */
+    #main-image-container {
+        position: relative;
+    }
+
+    /* Smooth transitions */
+    #main-image {
+        transition: opacity 0.5s ease-in-out;
+    }
+
+    /* Thumbnail styling */
+    button img {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    /* Hover effect for thumbnails */
+    button:hover img {
+        transform: scale(1.05);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+</style>
+
+     
+
+                  
             </div>
 
             <!-- Details Section -->
