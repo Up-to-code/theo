@@ -623,6 +623,9 @@ select{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/
 .w-fit{width:-moz-fit-content;width:fit-content}
 .w-full{width:100%}
 .w-max{width:-moz-max-content;width:max-content}
+.w-min{width:-moz-min-content;width:min-content}
+.w-\[\]{width:}
+.w-\[100px\]{width:100px}
 .min-w-0{min-width:0px}
 .min-w-80{min-width:20rem}
 .min-w-\[300px\]{min-width:300px}
