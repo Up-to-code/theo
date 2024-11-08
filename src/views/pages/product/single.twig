@@ -187,7 +187,7 @@
             </div>
 
             <!-- Details Section -->
-            <div class="w-full lg:w-[479.7777px] bg-gradient-to-t from-zinc-800 to-black rounded-3xl px-4 lg:px-6 py-6 text-white shadow-lg flex flex-col justify-between h-[576.2704px] shadow-zinc-900">
+            <div class="w-full lg:w-[479.7777px] bg-[#1D1A1B] rounded-3xl px-4 lg:px-6 py-6 text-white shadow-lg flex flex-col justify-between h-[576.2704px] shadow-zinc-900">
                 <div class="flex-1 pt-3">
                     <!-- Title and Description -->
                     <div class="mb-6">
@@ -210,6 +210,40 @@
                         </p>
                     </div>
                 </div>
+                {# Price #}
+                <div class="flex whitespace-nowrap gap-4 items-center">
+                    <div class="{{ product.is_on_sale ? '' : 'hidden' }} space-x-2 rtl:space-x-reverse whitespace-nowrap">
+                        <h4 class="text-red-800 font-bold text-xl inline-block">{{product.sale_price|money}}</h4>
+                        <span class="text-gray-500 line-through">{{product.regular_price|money}}</span>
+                    </div>
+                    <div class="gap-4 {{ product.is_on_sale ? 'hidden' : 'flex' }}">
+                        {% if product.starting_price %} 
+                            <span class="">{{ trans('pages.products.starting_price') }}</span>
+                        {% endif %} 
+                            <h2 class=" font-bold text-xl inline-block"> {{product.starting_price ? product.starting_price|money : product.price|money }}</h2>
+                    </div>
+                  </div>
+
+
+
+                {# Installment Methods #}
+                <salla-installment price="{{ product.price }}"></salla-installment>
+                {% if product.has_metadata %}
+                <salla-metadata></salla-metadata>
+                {% endif %}
+
+
+
+
+
+
+                <div>
+                          <!-- Product Options Section -->
+        {% if product.options|length %}
+        <salla-product-options options="{{ product.options }}" product-id="{{ product.id }}"></salla-product-options>
+    
+    {% endif %}
+                </div>
             <div class="w-[100px] mb-3">
                 <salla-quantity-input cart-item-id="{{ item.id }}" max="{{ product.max_quantity }}"
                 class="transtion transition-color duration-300 "
@@ -218,7 +252,7 @@
             </salla-quantity-input>
             </div>
                 <!-- Price and Call to Actions -->
-                <div class="flex flex-col sm:flex-row md:items-center gap-4 md:gap-6 mt-4">
+                {# <div class="flex flex-col sm:flex-row md:items-center gap-4 md:gap-6 mt-4">
            
                     <salla-button href="{{ link('cart') }}" id="cart-submit">
                         <span class="w-max text-xl lg:text-2xl font-semibold text-white p-3 px-6 bg-gradient-to-t from-black to-zinc-800 rounded-lg hover:bg-black transition-all flex items-center justify-center">
@@ -231,7 +265,7 @@
                         تخصيص
                     </button>
                     {% endif %}
-                </div>
+                </div> #}
             
                 <!-- Additional Info Section -->
                 <div class="border-t-2 border-main/50 my-4 md:my-6 pt-3 md:pt-4 flex items-center gap-2 md:gap-4">
@@ -239,9 +273,12 @@
                         <div class="text-lg md:text-xl font-semibold text-white p-2 md:p-3 bg-gradient-to-t from-black to-zinc-800 rounded-lg">
                             48h
                         </div>
-                        <div style="background-image: url('{{ 'images/icons/a1.svg' | asset }}');" class="w-12 md:w-16 lg:w-24 h-8 md:h-10 lg:h-14 bg-no-repeat bg-contain bg-center"></div>
-            
-                        <salla-add-product-button class="bg-transparent pt-2 md:pt-[10px]" product-id="{{ product.id }}" product-status="{{ product.status }}" product-type="{{ product.type }}">
+                        <div class="w-12 md:w-16 lg:w-24 h-8 md:h-10 lg:h-14 bg-no-repeat bg-contain bg-center" style="background-image: url('{{ 'images/icons/a1.svg' | asset }}');"></div>
+                       
+                        <salla-add-product-button 
+                        notify-options-availability="{{ product.options|length > 0 }}"
+                        
+                        class="bg-transparent pt-2 md:pt-[10px]" product-id="{{ product.id }}" product-status="{{ product.status }}" product-type="{{ product.type }}">
                             <div class="w-32 md:w-40 lg:w-52 h-8 md:h-10 lg:h-14 bg-no-repeat bg-contain bg-center" style="background-image: url('{{ 'images/icons/addtocart.svg' | asset }}');"></div>
                         </salla-add-product-button>
                     </div>
@@ -252,38 +289,14 @@
         </div>
 
 <!-- Modal Structure -->
-<div id="modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 hidden">
-    <div class="bg-dark rounded-lg shadow-lg w-11/12 md:w-2/3 lg:w-1/3 p-6 relative">
-        <button onclick="toggleModal()" class="absolute top-2 right-2 text-black font-bold text-xl">×</button>
-        <h2 class="text-xl font-semibold text-white mb-4">تفاصيل المنتج</h2>
-        
-        <!-- Product Options Section -->
-        {% if product.options|length %}
-            <salla-product-options options="{{ product.options }}" product-id="{{ product.id }}"></salla-product-options>
-        {% else %}
-            <p class="text-sm text-gray-500">لا توجد خيارات إضافية لهذا المنتج.</p>
-        {% endif %}
-
-        <!-- Additional Info Section -->
-        <button onclick="toggleModal()" class="mt-4 w-full p-2 text-white bg-gradient-to-t from-black to-zinc-800 rounded-lg">
-            إغلاق
-        </button>
-    </div>
-</div>
+ 
 
         <!-- Salla Offer Section -->
         <salla-offer></salla-offer>
     </div>
 </div>
 
-<!-- JavaScript to Toggle Modal -->
-<script>
-    function toggleModal() {
-        const modal = document.getElementById('modal');
-        modal.classList.toggle('hidden');
-    }
-</script>
-
+ 
 
 
    
