@@ -93,6 +93,18 @@
             "required": false
         },
         {
+            "id": "thank_you_oage",
+            "type": "string",
+            "format": "image",
+            "label": "خلفيت  صفحت الشكر",
+            "description": null,
+            "labelHTML": null,
+            "placeholder": "e.g. https://hostname.com/image.png",
+            "icon": "sicon-image",
+            "value": null,
+            "required": false
+        },
+        {
             "id": "line_3",
             "type": "static",
             "format": "line",
