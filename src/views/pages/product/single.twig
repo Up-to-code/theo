@@ -208,29 +208,31 @@
                                 </article>
                             {% endif %}
                         </p>
+
+                        <div class="flex whitespace-nowrap gap-4 items-center">
+                            <div class="{{ product.is_on_sale ? '' : 'hidden' }} space-x-2 rtl:space-x-reverse whitespace-nowrap">
+                                <h4 class="text-red-800 font-bold text-xl inline-block">{{product.sale_price|money}}</h4>
+                                <span class="text-gray-500 line-through">{{product.regular_price|money}}</span>
+                            </div>
+                            <div class="gap-4 {{ product.is_on_sale ? 'hidden' : 'flex' }}">
+                                {% if product.starting_price %} 
+                                    <span class="">{{ trans('pages.products.starting_price') }}</span>
+                                {% endif %} 
+                                    <h2 class=" font-bold text-xl inline-block"> {{product.starting_price ? product.starting_price|money : product.price|money }}</h2>
+                            </div>
+                          </div>
+        
+        
+        
+                        {# Installment Methods #}
+                        <salla-installment price="{{ product.price }}"></salla-installment>
+                        {% if product.has_metadata %}
+                        <salla-metadata></salla-metadata>
+                        {% endif %}
                     </div>
                 </div>
                 {# Price #}
-                <div class="flex whitespace-nowrap gap-4 items-center">
-                    <div class="{{ product.is_on_sale ? '' : 'hidden' }} space-x-2 rtl:space-x-reverse whitespace-nowrap">
-                        <h4 class="text-red-800 font-bold text-xl inline-block">{{product.sale_price|money}}</h4>
-                        <span class="text-gray-500 line-through">{{product.regular_price|money}}</span>
-                    </div>
-                    <div class="gap-4 {{ product.is_on_sale ? 'hidden' : 'flex' }}">
-                        {% if product.starting_price %} 
-                            <span class="">{{ trans('pages.products.starting_price') }}</span>
-                        {% endif %} 
-                            <h2 class=" font-bold text-xl inline-block"> {{product.starting_price ? product.starting_price|money : product.price|money }}</h2>
-                    </div>
-                  </div>
 
-
-
-                {# Installment Methods #}
-                <salla-installment price="{{ product.price }}"></salla-installment>
-                {% if product.has_metadata %}
-                <salla-metadata></salla-metadata>
-                {% endif %}
 
 
 
@@ -244,7 +246,7 @@
     
     {% endif %}
                 </div>
-            <div class="w-[100px] mb-3">
+            <div class="w-[120px] mb-3">
                 <salla-quantity-input cart-item-id="{{ item.id }}" max="{{ product.max_quantity }}"
                 class="transtion transition-color duration-300 "
                 aria-label="Quantity"
