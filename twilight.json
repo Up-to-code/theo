@@ -93,7 +93,7 @@
             "required": false
         },
         {
-            "id": "thank_you_oage",
+            "id": "thank_you_page",
             "type": "string",
             "format": "image",
             "label": "خلفيت  صفحت الشكر",
