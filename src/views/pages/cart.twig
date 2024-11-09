@@ -60,20 +60,20 @@
 
                 {% for item in cart.items %}
                     <form class="mb-5 last:mb-0" onchange="salla.form.onChange('cart.updateItem', event)" id="item-{{ item.id }}">
-                        <section class="cart-item bg-gradient-to-t from-zinc-900 to-black py-5 px-4 md:px-6 lg:px-8 rounded-2xl mb-5 last:mb-0 relative ">
+                        <section class="cart-item bg-gradient-to-t from-zinc-900 to-black py-5 px-4 md:px-6 lg:px-8 rounded-3xl mb-5 last:mb-0 relative ">
                             <input type="hidden" name="id" value="{{ item.id }}">
                                 <div class="md:flex rtl:space-x-reverse md:space-x-12 items-start justify-between mb-8 last:mb-0">
-                                    <div class="flex flex-1 rtl:space-x-reverse space-x-4">
-                                        <a href="{{ item.url }}" class="shrink-0">
+                                    <div class="flex  rtl:space-x-reverse space-x-4">
+                                        <a href="{{ item.url }}" class="shrink-0 md:w-40 ">
                                             {% if loop.first %}
                                                 <img src="{{ item.product_image }}"
                                                     alt="{{ item.product_name }}"
-                                                    class="flex-none w-24 h-20 border border-gray-200 bg-gray-100 rounded-md object-center object-cover">
+                                                    class="flex-none w-28 h-48  md:w-44   rounded-md object-center object-cover">
                                             {% else %}
                                                 <img src="{{ 'images/s-empty.png' | cdn }}"
                                                     data-src="{{ item.product_image }}"
                                                     alt="{{ item.product_name }}"
-                                                    class="lazy flex-none w-24 h-20 border border-gray-200 bg-gray-100 rounded-md object-center object-cover">
+                                                    class="lazy flex-none w-28 h-44 border md:w-48  rounded-md object-center object-cover">
                                             {% endif %}
                                         </a>
                                         <div class="space-y-1">
@@ -91,11 +91,13 @@
                                             <span class="text-sm text-white offer-name {{ item.offer?'':'hidden' }}">{{ item.offer.names }}</span>
                                         </div>
                                     </div>
-               <div class=""> 
+               <div class=" flex-1"> 
                                     <div class="flex-1 border-t border-b border-gray-200 py-3 md:p-0 md:border-none mt-5 md:mt-0 flex justify-between items-center md:items-start">
               
 
-             
+              <div class=" mb-3">
+
+            
                                         {% if item.type == 'donating' %}
                                             <span></span>
                                         {% elseif item.is_hidden_quantity %}
@@ -108,8 +110,8 @@
                                                 value="{{ item.quantity }}" name="quantity">
                                             </salla-quantity-input>
                                         {% endif %}
-
-                                        <p class="text-white flex-none font-bold text-sm rtl:md:pl-12 ltr:md:pr-12">
+  </div>
+                                        <p class="text-white flex-none  mt-3 text-sm rtl:md:pl-12 ltr:md:pr-12 mx-2">
                                             <span>{{ trans('pages.cart.total') }}:</span>
                                             <span class="inline-block item-total">{{ item.is_available?item.total|money: trans('pages.cart.out_of_stock') }}</span>
                                         </p>
@@ -117,6 +119,7 @@
 
 
    </div>
+                                {% include 'pages.partials.product.options' with {product:item} %}
 
    {% if cart.options|length %}
    <div class="cart-options">
@@ -132,7 +135,6 @@
                                     </div>
                                 </div>
 
-                                {% include 'pages.partials.product.options' with {product:item} %}
                             <span class="absolute top-1.5 rtl:left-1.5 ltr:right-1.5 rtl:xs:left-5 ltr:xs:right-5 xs:top-5">
                                 <salla-button type="button" shape="icon" size="small" color="danger" class="btn--delete" aria-label="Remove from the cart"
                                         onclick="salla.cart.deleteItem({{ item.id }}).then(() => document.querySelector('#item-{{ item.id }}').remove())">
@@ -195,7 +197,7 @@
                         </div>
                     {% endif %}
 
-                    <div class="shadow-default bg-gradient-to-t from-zinc-800 to-black p-5 xs:p-7 rounded-md mb-5 relative transition-height duration-1000">
+                    <div class="shadow-default bg-gradient-to-t from-zinc-900 to-black p-5 xs:p-7 rounded-md mb-5 relative transition-height duration-1000">
                         <h2 class="font-bold text-sm mb-5 text-white">{{ trans('pages.cart.summary') }}</h2>
 
                         <div class="flex justify-between text-sm mb-5">

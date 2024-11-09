@@ -27,14 +27,14 @@
                 <li><span class="fix-align">{{ thank_you_title }}</span></li>
             </ol>
         </nav>
-        <div class="bg-white p-4 md:p-8 rounded-md mb-6 md:mb-8">
+        <div class="bg-gradient-to-t from-zinc-900 to-black p-5 xs:p-7 rounded-md mb-5 relative transition-height duration-1000">
             <div class="flex flex-col items-center pt-16 pb-10">
                 <div class="rtl:-scale-x-100">
                   <img src="{{ 'images/delivery-bro.svg' | asset }}" alt="{{ thank_you_title }}"
                      class="thanks-item opacity-0 w-40 mb-8">
                 </div>
                 <h1 class="font-bold text-lg mb-2.5 thanks-item opacity-0">{{ thank_you_title }}</h1>
-                <p class="thanks-item opacity-0 text-gray-500 max-w-xs text-center text-sm leading-6 mb-6">
+                <p class="thanks-item opacity-0 text-gray-100 max-w-xs text-center text-sm leading-6 mb-6">
                     {{ trans('pages.thank_you.order_id') }}
                     <salla-button class="relative" onclick="app.copyToClipboard(event)" color="dark" shape="link" data-content="{{ order.reference_id }}">
                         <span>#{{ order.reference_id }}</span>
@@ -63,7 +63,7 @@
 
             {% for item in order.items %}
                 {% if item.codes|length %}
-                    <div class="bg-gray-50 p-5 rounded-md text-start mb-2.5 last:mb-0">
+                    <div class="bg-gradient-to-tr from-zinc-900 to-black p-5 xs:p-7 rounded-md mb-5 relative transition-height duration-1000">
                         <h2 class="font-bold mb-5 unicode">
                             {{ trans('pages.thank_you.codes') }} ({{ item.name }})
                         </h2>
@@ -83,7 +83,7 @@
                 {% endif %}
 
                 {% if item.files|length %}
-                    <div class="bg-gray-50 p-5 rounded-md text-start">
+                    <div class="bg-gradient-to-tr from-zinc-900 to-black p-5 xs:p-7 rounded-md mb-5 relative transition-height duration-1000">
                         <h2 class="font-bold mb-5 unicode">
                             {{ trans('pages.thank_you.files') }} ({{ item.name }})
                         </h2>
@@ -111,7 +111,7 @@
         <div class="lg:flex rtl:space-x-reverse lg:space-x-8">
             {% if order.email_sent %}
                 <div class="duration-500 hover:shadow-default flex-1 bg-white p-8 rounded-md mb-6 md:mb-10 flex flex-col items-center justify-center">
-                    <div class="bg-gray-100 rounded-icon w-12 h-12 mb-2.5">
+                    <div class="bg-gradient-to-tr from-zinc-900 to-black p-5 xs:p-7 rounded-md mb-5 relative transition-height duration-1000">
                         <i class="sicon-newspaper-alt text-xl"></i>
                     </div>
                     <p class="text-sm mb-2.5">{{ trans('pages.thank_you.email_sent') }}</p>
@@ -119,13 +119,13 @@
                 </div>
             {% else %}
                 <div id="invoice-form" class="thankyou-block">
-                    <div class="bg-gray-100 rounded-icon w-12 h-12 mb-2.5">
+                    <div class="bg-gradient-to-tr from-zinc-900 to-black p-5 xs:p-7 rounded-md mb-5 relative transition-height duration-1000">
                         <i class="sicon-newspaper-alt text-xl"></i>
                     </div>
                     <p class="text-sm mb-2.5">{{ trans('pages.thank_you.resend_email') }}</p>
                     <form onsubmit="return salla.form.onSubmit('order.sendInvoice', event)">
                         <div class="flex max-w-3xl w-full">
-                            <input type="email" class="form-input rtl:rounded-l-none ltr:rounded-r-none rtl:border-l-0 ltr:border-r-0 !w-[160px] sm:!w-[220px]" placeholder="your@email.com" required name="email">
+                            <input type="email" class="form-input rtl:rounded-l-none ltr:rounded-r-none rtl:border-l-0 ltr:border-r-0 !w-[160px] sm:!w-[220px] border-zinc-600" placeholder="your@email.com" required name="email">
                             <salla-button type="submit" loader-position="center" class="rtl:rounded-r-none ltr:rounded-l-none lg:w-24 h-10">
                               <span class="btn__text">{{ trans('blocks.comments.submit') }}</span>
                             </salla-button>
@@ -135,7 +135,7 @@
             {% endif %}
 
             <div class="thankyou-block">
-                <div class="bg-gray-100 rounded-icon w-12 h-12 mb-2.5">
+                <div class="bg-gradient-to-tr from-zinc-900 to-black p-5 xs:p-7 rounded-md mb-5 relative transition-height duration-1000">
                     <i class="sicon-mail-letter text-xl"></i>
                 </div>
                 <p class="text-sm mb-2.5">{{ trans('common.titles.support') }}</p>

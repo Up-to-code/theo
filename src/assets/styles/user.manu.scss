@@ -4,6 +4,7 @@
 .s-user-menu-toggler.opened .s-user-menu-dropdown{
 @apply bg-gradient-to-t from-zinc-800 to-black right-5    z-50
 }
+
 .s-user-menu-dropdown-item a{
   color: white;
 }
@@ -13,7 +14,9 @@
 .s-cart-summary-total-label{
   color: white;
 }
-
+.s-product-options-option-label small{
+  color: rgb(209, 209, 209);
+}
 .s-button-primary{
   @apply bg-transparent p-0 hover:bg-transparent border-none
 }
@@ -35,7 +38,9 @@ footer >p{
   @apply  hidden
 }
 
-
+.thankyou-block{
+  @apply bg-gradient-to-t from-zinc-900 to-black p-5 xs:p-7 rounded-md mb-5 relative transition-height duration-1000
+}
 
 //////////////////////
 .s-search {
@@ -196,7 +201,9 @@ footer >p{
     }
   }
 }
-
+.s-button-dark-link{
+  color: #d1d1d1;
+}
 // Spin animation
 @keyframes spin {
   0% { transform: rotate(0deg); }

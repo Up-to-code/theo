@@ -143,7 +143,9 @@ theme.settings.get(settingName, default=null) | mixed | get theme setting ex
       background-image: url('{{ theme.settings.get('bg_user') }}'); {% endif %}
        {% if is_page('cart')  %}
        background-image: url('{{ theme.settings.get('bg_cart') }}'); {% endif %}
-      "
+       {% if is_page('thank-you')  %}
+       background-image: url('{{ theme.settings.get('thank_you_page') }}'); {% endif %}
+       "
     >
       {% hook 'body:start' %} {% component 'header.header' %} {% block content
       %}{% endblock %} {% component 'footer.footer' %}

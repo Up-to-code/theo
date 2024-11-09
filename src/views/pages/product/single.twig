@@ -275,12 +275,12 @@
                         <div class="text-lg md:text-xl font-semibold text-white p-2 md:p-3 bg-gradient-to-t from-black to-zinc-800 rounded-lg">
                             48h
                         </div>
-                        <div class="w-12 md:w-16 lg:w-24 h-8 md:h-10 lg:h-14 bg-no-repeat bg-contain bg-center" style="background-image: url('{{ 'images/icons/a1.svg' | asset }}');"></div>
+                        <div class="w-14 md:w-[60px] h-8 md:h-10 lg:h-14 bg-no-repeat bg-contain bg-center" style="background-image: url('{{ 'images/icons/a1.svg' | asset }}');"></div>
                        
                         <salla-add-product-button 
                         notify-options-availability="{{ product.options|length > 0 }}"
                         
-                        class="bg-transparent pt-2 md:pt-[10px]" product-id="{{ product.id }}" product-status="{{ product.status }}" product-type="{{ product.type }}">
+                        class="bg-transparent pt-2 md:pt-[10px] w-[60px]" product-id="{{ product.id }}" product-status="{{ product.status }}" product-type="{{ product.type }}">
                             <div class="w-32 md:w-40 lg:w-52 h-8 md:h-10 lg:h-14 bg-no-repeat bg-contain bg-center" style="background-image: url('{{ 'images/icons/addtocart.svg' | asset }}');"></div>
                         </salla-add-product-button>
                     </div>
