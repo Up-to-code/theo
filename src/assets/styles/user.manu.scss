@@ -456,3 +456,21 @@ font-weight: 100;
 .s-quantity-input-input{
   border : none;
 }
+.bg-white,
+.s-orders-table-head{
+  background-color: #1c1c1e !important;
+  color: white !important;
+}
+.s-orders-table-head{
+  @apply py-2
+}
+.border-gray-200{
+  border-color: #222222 !important;
+}
+.text-gray-500,
+.text-gray-600{
+  color: #c9c9c9 !important;
+}
+.text-dark{
+  color: #d4d4d4 !important;
+}

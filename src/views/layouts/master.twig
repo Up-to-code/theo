@@ -138,7 +138,8 @@ theme.settings.get(settingName, default=null) | mixed | get theme setting ex
                
       {% if is_page('customer.orders.index')  %}
       background-image: url('{{ theme.settings.get('bg_user') }}'); {% endif %}
-         
+        {% if is_page('customer.orders.single')  %}
+        background-image: url('{{ theme.settings.get('bg_user') }}'); {% endif %}
       {% if is_page('customer.orders.single')  %}
       background-image: url('{{ theme.settings.get('bg_user') }}'); {% endif %}
        {% if is_page('cart')  %}
