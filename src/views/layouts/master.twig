@@ -120,32 +120,21 @@ theme.settings.get(settingName, default=null) | mixed | get theme setting ex
     <div
       class="app-inner flex flex-col min-h-full text-white"
       style="background-size: cover; background-position: center; background-repeat: no-repeat;
-      {% if is_page('index') %} 
-      
-      background-image: url('{{ theme.settings.get('bgindex') }}'); {% endif %}
-       {% if is_page('product.single') %} 
-      background-image: url('{{ theme.settings.get('prodcut_bg') }}'); {% endif %}
-       {% if is_page('product.index') %} 
-      background-image: url('{{ theme.settings.get('bg_index') }}'); {% endif %}
-  
-      {% if is_page('customer.profile')  %}
-      background-image: url('{{ theme.settings.get('bg_user') }}'); {% endif %}
-             {% if is_page('customer.notifications')  %}
-      background-image: url('{{ theme.settings.get('bg_user') }}'); {% endif %}
-         
-      {% if is_page('customer.wishlist')  %}
-      background-image: url('{{ theme.settings.get('bg_user') }}'); {% endif %}
-               
-      {% if is_page('customer.orders.index')  %}
-      background-image: url('{{ theme.settings.get('bg_user') }}'); {% endif %}
-        {% if is_page('customer.orders.single')  %}
-        background-image: url('{{ theme.settings.get('bg_user') }}'); {% endif %}
-      {% if is_page('customer.orders.single')  %}
-      background-image: url('{{ theme.settings.get('bg_user') }}'); {% endif %}
-       {% if is_page('cart')  %}
-       background-image: url('{{ theme.settings.get('bg_cart') }}'); {% endif %}
-       {% if is_page('thank-you')  %}
-       background-image: url('{{ theme.settings.get('thank_you_page') }}'); {% endif %}
+    {% if is_page('index') %}
+    background-image: url('{{ theme.settings.get('bgindex') }}');
+{% elseif is_page('product.single') %}
+    background-image: url('{{ theme.settings.get('prodcut_bg') }}');
+{% elseif is_page('product.index') %}
+    background-image: url('{{ theme.settings.get('bg_index') }}');
+{% elseif is_page('customer.profile') or is_page('customer.notifications') or is_page('customer.wishlist') or is_page('customer.orders.index') or is_page('customer.orders.single') %}
+    background-image: url('{{ theme.settings.get('bg_user') }}');
+{% elseif is_page('cart') %}
+    background-image: url('{{ theme.settings.get('bg_cart') }}');
+{% elseif is_page('thank-you') %}
+    background-image: url('{{ theme.settings.get('thank_you_page') }}');
+    {% else %}
+    background-image: url('{{ theme.settings.get('bg_user') }}');
+{% endif %}
        "
     >
       {% hook 'body:start' %} {% component 'header.header' %} {% block content
