@@ -245,7 +245,14 @@ background-position: center;
     <!-- Button to open search component-->
   </div>
 </div>
-
+ {% for item in theme.settings.get('dropdown_list') %}
+   <li> 
+     <a href="{{ item.url }}" class="text-white">
+       {{ item.name }}
+     </a>
+     </li>
+     
+ {% endfor %}
 {% if store.scope %}
 <salla-scopes
   selection="{{ store.scope.display_as == 'popup' ? 'mandatory' : 'optional' }}"
