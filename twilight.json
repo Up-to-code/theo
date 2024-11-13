@@ -33,22 +33,6 @@
             "icon": "sicon-minus"
         },
         {
-            "id": "dropdown_list",
-            "type": "items",
-            "format": "dropdown-list",
-            "label": "Dropdown List",
-            "description": null,
-            "labelHTML": null,
-            "icon": "sicon-keyboard_arrow_down",
-            "selected": [],
-            "options": [],
-            "source": "Categories",
-            "multichoice": true,
-            "searchable": true,
-            "required": false,
-            "value": []
-        },
-        {
             "id": "bgindex",
             "type": "string",
             "format": "image",
@@ -242,7 +226,7 @@
             "icon": "sicon-format-text-alt",
             "value": null,
             "multilanguage": false,
-            "required": false,
+            "required": true,
             "minLength": "3",
             "maxLength": 30
         },
@@ -259,7 +243,7 @@
             "source": "Categories",
             "multichoice": true,
             "searchable": true,
-            "required": false,
+            "required": true,
             "value": [],
             "public": true
         },
