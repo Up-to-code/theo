@@ -216,6 +216,22 @@
             "maxLength": 5
         },
         {
+            "id": "navbar_c",
+            "type": "items",
+            "format": "dropdown-list",
+            "label": "تصنفات القأمه العلويه",
+            "description": null,
+            "labelHTML": null,
+            "icon": "sicon-keyboard_arrow_down",
+            "selected": [],
+            "options": [],
+            "source": "Categories",
+            "multichoice": true,
+            "searchable": true,
+            "required": false,
+            "value": []
+        },
+        {
             "id": "line",
             "type": "static",
             "format": "line",
