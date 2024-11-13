@@ -133,7 +133,7 @@
               </li>
               {% for item in theme.settings.get('navbar') %}
               <li>
-                <a href="{{ item.url }}" class="block px-5 py-2 h-12 flex items-center hover:bg-gray-200 transition-colors duration-300">
+                <a href="{{ item.url }}" class=" px-5 py-2 h-12 flex items-center hover:bg-gray-200 transition-colors duration-300">
                   {{ item.title }}
                 </a>
               </li>
@@ -188,7 +188,26 @@ background-position: center;
       </a>
     </li>
 
-    {% endif %} {% for item in theme.settings.get('navbar') %}
+    {% endif %} 
+    
+    {% if theme.settings.get('c_name')|length %}
+    
+    <li class="mx-2 relative">
+      <a
+        
+        class="hoverNav px-5 py-2 h-12 flex items-center justify-center transition-all duration-300 ease-in-out transform focus:outline-none focus:ring-2 focus:ring-gray-500"
+      >
+        <p class="leading-none text-base font-semibold">
+          {{ theme.settings.get('c_name') }}
+        </p>
+      </a>
+      <div>
+
+      </div>
+    </li>
+    
+     {% endif %}
+    {% for item in theme.settings.get('navbar') %}
     <li class="mx-2">
       <a
         href="{{item.url}}"
@@ -232,3 +251,13 @@ background-position: center;
   selection="{{ store.scope.display_as == 'popup' ? 'mandatory' : 'optional' }}"
 ></salla-scopes>
 {% endif %}
+{% for item in theme.settings.get('navbar_c') %}
+<ul class=" top-0 right-0 mt-2 mr-2 rounded-md shadow-lg z-50 w-max">
+   <li>
+     <a href="{{ item.url }}" class="text-white">
+       {{ item.name }}
+     </a>
+   </li>
+
+</ul>
+{% endfor %}
