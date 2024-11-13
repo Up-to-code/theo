@@ -251,7 +251,9 @@ background-position: center;
   selection="{{ store.scope.display_as == 'popup' ? 'mandatory' : 'optional' }}"
 ></salla-scopes>
 {% endif %}
-{% for item in theme.settings.get('navbar_c') %}
+{% set menu = theme.settings.get('navbar_c') %}
+
+{% for item in menu %}
 <ul class=" ">
    <li>
      <a href="{{ item.url }}" class="text-white">
