@@ -216,6 +216,21 @@
             "maxLength": 5
         },
         {
+            "id": "c_name",
+            "type": "string",
+            "format": "text",
+            "label": "اسم القأمه المنسدله",
+            "description": null,
+            "labelHTML": null,
+            "placeholder": "Placeholder text ..",
+            "icon": "sicon-format-text-alt",
+            "value": null,
+            "multilanguage": false,
+            "required": false,
+            "minLength": "3",
+            "maxLength": 30
+        },
+        {
             "id": "navbar_c",
             "type": "items",
             "format": "dropdown-list",
