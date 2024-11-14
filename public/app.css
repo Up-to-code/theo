@@ -7645,6 +7645,7 @@ footer > p {
 .hover\:bg-black:hover{--tw-bg-opacity:1;background-color:rgba(0, 0, 0, 1);background-color:rgba(0, 0, 0, var(--tw-bg-opacity))}
 .hover\:bg-gray-200:hover{--tw-bg-opacity:1;background-color:rgba(229, 231, 235, 1);background-color:rgba(229, 231, 235, var(--tw-bg-opacity))}
 .hover\:bg-transparent:hover{background-color:transparent}
+.hover\:bg-gray-900:hover{--tw-bg-opacity:1;background-color:rgba(17, 24, 39, 1);background-color:rgba(17, 24, 39, var(--tw-bg-opacity))}
 .hover\:text-black:hover{--tw-text-opacity:1;color:rgba(0, 0, 0, 1);color:rgba(0, 0, 0, var(--tw-text-opacity))}
 .hover\:text-dark:hover{--tw-text-opacity:1;color:rgba(43, 43, 43, 1);color:rgba(43, 43, 43, var(--tw-text-opacity))}
 .hover\:text-gray-700:hover{--tw-text-opacity:1;color:rgba(55, 65, 81, 1);color:rgba(55, 65, 81, var(--tw-text-opacity))}

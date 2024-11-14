@@ -127,13 +127,13 @@
             <!-- Mega Menu Links -->
             <ul class="mt-6">
               <li>
-                <a href="{{ store.url }}" class="block px-5 py-2 h-12 flex items-center hover:bg-gray-200 transition-colors duration-300">
+                <a href="{{ store.url }}" class="block px-5 py-2 h-12 flex items-center hover:bg-gray-900 transition-colors duration-300">
                   الرئيسية
                 </a>
               </li>
               {% for item in theme.settings.get('navbar') %}
               <li>
-                <a href="{{ item.url }}" class=" px-5 py-2 h-12 flex items-center hover:bg-gray-200 transition-colors duration-300">
+                <a href="{{ item.url }}" class=" px-5 py-2 h-12 flex items-center hover:bg-gray-900 transition-colors duration-300">
                   {{ item.title }}
                 </a>
               </li>
@@ -252,3 +252,15 @@ background-position: center;
   selection="{{ store.scope.display_as == 'popup' ? 'mandatory' : 'optional' }}"
 ></salla-scopes>
 {% endif %}
+
+{% for item in  theme.settings.get('navbar_c') %}
+<li class="mx-2"> 
+  <a
+    href="{{item.url}}"
+    class=""
+  >
+    <p class="leading-none text-base font-semibold">
+      {{ item.name }}
+    </p>
+  </a>
+{% endfor %}
