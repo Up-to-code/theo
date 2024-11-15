@@ -496,3 +496,8 @@ footer > p {
 .main-content.w-full.flex-1.lg\:pt-10 {
   @apply mt-0 md:mt-[-150px];
 }
+
+.s-comment-form-action salla-button {
+  background: var(--color-primary);
+  padding: 4px;
+}
