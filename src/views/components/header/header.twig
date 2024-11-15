@@ -160,7 +160,7 @@
     </nav>
         
     <ul
-    class="hidden lg:flex rounded-xl w-max text-white overflow-hidden h-full "
+    class="hidden lg:flex rounded-xl w-max text-white  h-full "
     style="
 background-image: url('{{ 'images/Calque_1.svg' | asset }}');
 background-size: cover;
@@ -172,7 +172,7 @@ background-position: center;
     <li class="">
       <a
         href="{{store.url}}"
-        class="activeNav px-5 py-2 h-12 flex items-center justify-center hoverNav transition-all duration-300 ease-in-out transform focus:outline-none"
+        class="activeNav px-5 py-2 h-12 flex items-center justify-center hoverNav transition-all duration-300 ease-in-out transform focus:outline-none rounded-r"
       >
         <p class="leading-none text-base font-semibold">الرئيسية</p>
       </a>
@@ -182,7 +182,7 @@ background-position: center;
     <li class="">
       <a
         href="{{store.url}}"
-        class="px-5 py-2 h-12 flex items-center justify-center hoverNav transition-all duration-300 ease-in-out transform focus:outline-none"
+        class="px-5 py-2 h-12 flex items-center justify-center hoverNav transition-all duration-300 ease-in-out transform focus:outline-none rounded-r"
       >
         <p class="leading-none text-base font-semibold">الرئيسية</p>
       </a>
@@ -191,22 +191,36 @@ background-position: center;
     {% endif %} 
     
     {% if theme.settings.get('c_name')|length %}
-    
     <li class="mx-2 relative">
-      <a
-        
-        class="hoverNav px-5 py-2 h-12 flex items-center justify-center transition-all duration-300 ease-in-out transform focus:outline-none focus:ring-2 focus:ring-gray-500"
-      >
+      <a class="hoverNav px-5 py-2 h-12 flex items-center justify-center transition-all duration-300 ease-in-out transform focus:outline-none focus:ring-2 focus:ring-gray-500 item">
         <p class="leading-none text-base font-semibold">
           {{ theme.settings.get('c_name') }}
         </p>
       </a>
-      <div>
-
+  
+      <!-- Dev Menu -->
+      <div class="absolute conditional-item top-10 left-0 -right-2 w-max z-10 flex justify-between items-center px-4 md:px-1" dir="">
+        <div class="conditional-item mt-5">
+          <div class=" bg-zinc-900 rounded w-max px-5 py-2">
+            <div class="py-1 px-2 rounded hover:bg-gray-900 transition-colors duration-300">
+              item 1
+            </div>
+            <div class="py-1 px-2 rounded hover:bg-gray-900 transition-colors duration-300">
+              item 2
+            </div>
+            <div class="py-1 px-2 rounded hover:bg-gray-900 transition-colors duration-300">
+              item 3
+            </div>
+          </div>
+        </div>
       </div>
     </li>
-    
-     {% endif %}
+  {% endif %}
+  
+
+
+
+
     {% for item in theme.settings.get('navbar') %}
     <li class="mx-2">
       <a
@@ -223,30 +237,13 @@ background-position: center;
     {% endfor %}
 
   </ul>
-    <script>
-      function toggleDrawer() {
-        const overlay = document.getElementById('drawerOverlay');
-        overlay.classList.toggle('hidden');
-        const drawerContent = document.getElementById('drawerContent');
-        drawerContent.classList.toggle('translate-x-full');
-        drawerContent.classList.toggle('translate-x-0');
-      }
-    
-      function closeDrawer() {
-        document.getElementById('drawerOverlay').classList.add('hidden');
-        document.getElementById('drawerContent').classList.add('translate-x-full');
-      }
-    
-      function toggleMegaMenu() {
-        // Add any necessary Mega Menu toggle logic here
-      }
-    </script>
+
     
   <div>
     <!-- Button to open search component-->
   </div>
 </div>
-
+ 
 {% if store.scope %}
 <salla-scopes
   selection="{{ store.scope.display_as == 'popup' ? 'mandatory' : 'optional' }}"
@@ -265,4 +262,21 @@ background-position: center;
     </p>
   </a>
 {% endfor %}
- 
+     <script>
+      function toggleDrawer() {
+        const overlay = document.getElementById('drawerOverlay');
+        overlay.classList.toggle('hidden');
+        const drawerContent = document.getElementById('drawerContent');
+        drawerContent.classList.toggle('translate-x-full');
+        drawerContent.classList.toggle('translate-x-0');
+      }
+    
+      function closeDrawer() {
+        document.getElementById('drawerOverlay').classList.add('hidden');
+        document.getElementById('drawerContent').classList.add('translate-x-full');
+      }
+    
+      function toggleMegaMenu() {
+        // Add any necessary Mega Menu toggle logic here
+      }
+    </script>
