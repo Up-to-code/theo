@@ -45,67 +45,123 @@
   {# Main Nav #}
 </header>
 
-<div class=" flex-col gap-3 pt-2">
+<div class="flex-col gap-3 pt-2">
   {# #}
-  <div class=" container"> 
-
-    <nav class="mt-5 flex justify-between items-center w-full px-4 md:px-1" dir="">
+  <div class="container">
+    <nav
+      class="mt-5 flex justify-between items-center w-full px-4 md:px-1"
+      dir=""
+    >
       <!-- Logo on the Left -->
 
       <!-- Mega Menu & User Icons (Right-Aligned) -->
-      <div class="flex items-center space-x-4 space-x-reverse"> <!-- Fix spacing for RTL -->
- 
-    <div class="hidden lg:flex">
- 
+      <div class="flex items-center space-x-4 space-x-reverse">
+        <!-- Fix spacing for RTL -->
 
-        <!-- User Icon -->
-        {% if user.type == 'user' %}
-        <salla-user-menu avatar-only relative-dropdown></salla-user-menu>
-        {% else %}
-        <button class="p-2 rounded-md focus:outline-none" onclick="salla.event.dispatch('login::open')">
-          <img src="{{ 'images/icons/usera.png' | asset }}" alt="User Icon" class="w-6 h-6" loading="lazy" />
+        <div class="hidden lg:flex">
+          <!-- User Icon -->
+          {% if user.type == 'user' %}
+          <salla-user-menu avatar-only relative-dropdown></salla-user-menu>
+          {% else %}
+          <button
+            class="p-2 rounded-md focus:outline-none"
+            onclick="salla.event.dispatch('login::open')"
+          >
+            <img
+              src="{{ 'images/icons/usera.png' | asset }}"
+              alt="User Icon"
+              class="w-6 h-6"
+              loading="lazy"
+            />
+          </button>
+          {% endif %}
+          <div class="flex items-center">
+            <!-- Search Icon -->
+            <button
+              class="p-2 rounded-md focus:outline-none"
+              onclick="salla.event.dispatch('search::open')"
+            >
+              <img
+                src="{{ 'images/icons/search.png' | asset }}"
+                alt="Search Icon"
+                loading="lazy"
+                class="w-32"
+              />
+            </button>
+            <salla-cart-summary class="ml-4 rtl:ml-[unset] rtl:mr-4">
+              <i
+                slot="icon"
+                class="sicon-shopping-bag text-white text-2xl"
+                style="position: relative; bottom: -3px; left: -3px;"
+              ></i>
+            </salla-cart-summary>
+          </div>
+        </div>
+        <!-- Mega Menu Button (Desktop Only) -->
+        <button
+          class="lg:hidden text-white focus:outline-none"
+          onclick="toggleDrawer()"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
         </button>
-        {% endif %}
-    <div class="flex items-center">
- 
-        <!-- Search Icon -->
-        <button class="p-2 rounded-md focus:outline-none" onclick="salla.event.dispatch('search::open')">
-          <img src="{{ 'images/icons/search.png' | asset }}" alt="Search Icon" loading="lazy" class="w-32" />
-        </button> 
-        <salla-cart-summary class="ml-4 rtl:ml-[unset] rtl:mr-4">
-          <i slot="icon" class="sicon-shopping-bag text-white text-2xl" style="position: relative; bottom: -3px; left: -3px;"></i>
-        </salla-cart-summary>  
-    
+        <salla-cart-summary
+          class="ml-4 rtl:ml-[unset] rtl:mr-4 block md:hidden"
+        >
+          <i
+            slot="icon"
+            class="sicon-shopping-bag text-white text-2xl"
+            style="position: relative; bottom: -3px; left: -3px;"
+          ></i>
+        </salla-cart-summary>
       </div>
-      </div>
-      <!-- Mega Menu Button (Desktop Only) -->
-      <button class="lg:hidden text-white focus:outline-none " onclick="toggleDrawer()">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
-      <salla-cart-summary class="ml-4 rtl:ml-[unset] rtl:mr-4 block md:hidden">
-        <i slot="icon" class="sicon-shopping-bag text-white text-2xl" style="position: relative; bottom: -3px; left: -3px;"></i>
-      </salla-cart-summary>  
-      </div>
-     <div>
-      
-
-    
- 
-     </div>
+      <div></div>
       <!-- Drawer Toggle (Mobile Only) -->
- 
+
       <!-- Drawer Overlay and Content (Mobile) -->
-      <div id="drawerOverlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50" onclick="closeDrawer()">
-        <div class="w-64 bg-dark h-full p-4 shadow-lg transform translate-x-full transition-transform duration-300" id="drawerContent" onclick="event.stopPropagation()">
-          <button class="text-gray-500 hover:text-gray-700 focus:outline-none" onclick="closeDrawer()">
+      <div
+        id="drawerOverlay"
+        class="fixed inset-0 bg-black bg-opacity-50 hidden z-50"
+        onclick="closeDrawer()"
+      >
+        <div
+          class="w-64 bg-dark h-full p-4 shadow-lg transform translate-x-full transition-transform duration-300"
+          id="drawerContent"
+          onclick="event.stopPropagation()"
+        >
+          <button
+            class="text-gray-500 hover:text-gray-700 focus:outline-none"
+            onclick="closeDrawer()"
+          >
             <!-- Close Icon -->
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M6 18L18 6M6 6l12 12"
+              />
             </svg>
           </button>
-    
+
           <!-- Drawer Content: User & Search Icons + Mega Menu Links -->
           <div class="mt-6 space-y-4">
             <!-- User Icon in Drawer -->
@@ -113,27 +169,74 @@
               {% if user.type == 'user' %}
               <salla-user-menu avatar-only relative-dropdown></salla-user-menu>
               {% else %}
-              <button class="p-2 rounded-md focus:outline-none" onclick="salla.event.dispatch('login::open')">
-                <img src="{{ 'images/icons/usera.png' | asset }}" alt="User Icon" class="w-6 h-6" loading="lazy" />
+              <button
+                class="p-2 rounded-md focus:outline-none"
+                onclick="salla.event.dispatch('login::open')"
+              >
+                <img
+                  src="{{ 'images/icons/usera.png' | asset }}"
+                  alt="User Icon"
+                  class="w-6 h-6"
+                  loading="lazy"
+                />
               </button>
               {% endif %}
             </div>
-    
+
             <!-- Search Icon in Drawer -->
-            <button class="p-2 rounded-md focus:outline-none" onclick="salla.event.dispatch('search::open')">
-              <img src="{{ 'images/icons/search.png' | asset }}" alt="Search Icon" loading="lazy" class="w-32" />
+            <button
+              class="p-2 rounded-md focus:outline-none"
+              onclick="salla.event.dispatch('search::open')"
+            >
+              <img
+                src="{{ 'images/icons/search.png' | asset }}"
+                alt="Search Icon"
+                loading="lazy"
+                class="w-32"
+              />
             </button>
-    
+
             <!-- Mega Menu Links -->
             <ul class="mt-6">
               <li>
-                <a href="{{ store.url }}" class="block px-5 py-2 h-12 flex items-center hover:bg-gray-900 transition-colors duration-300">
+                <a
+                  href="{{ store.url }}"
+                  class="block px-5 py-2 h-12 flex items-center hover:bg-gray-900 transition-colors duration-300"
+                >
                   الرئيسية
                 </a>
               </li>
-              {% for item in theme.settings.get('navbar') %}
+              {% if theme.settings.get('c_name')|length %}
+              <li class=""id="c_name">
+                <p
+                  class="px-5 py-2 h-12 flex items-center hover:bg-gray-900 transition-colors duration-300"
+                >
+                  {{ theme.settings.get("c_name") }}
+
+                  <i class="sicon-keyboard_arrow_down"></i>
+                </p>
+                {% if theme.settings.get('navbar_c')|length %}
+                <div class="hidden "id='navbar_c'>
+                  {% for item in theme.settings.get('navbar_c') %}
+                  <a
+                    href="{{item.url}}"
+                    class="py-1 px-2 rounded hover:bg-gray-900 transition-colors duration-300"
+                  >
+                    <p class="leading-none text-base font-semibold">
+                      {{ item.name }}
+                    </p>
+                  </a>
+
+                  {% endfor %}
+                </div>
+                {% endif %}
+              </li>
+              {% endif %} {% for item in theme.settings.get('navbar') %}
               <li>
-                <a href="{{ item.url }}" class=" px-5 py-2 h-12 flex items-center hover:bg-gray-900 transition-colors duration-300">
+                <a
+                  href="{{ item.url }}"
+                  class="px-5 py-2 h-12 flex items-center hover:bg-gray-900 transition-colors duration-300"
+                >
                   {{ item.title }}
                 </a>
               </li>
@@ -143,140 +246,146 @@
         </div>
       </div>
 
+      {% if is_home %}
+      <a href="{{ store.url }}" class="flex items-center scale-75 md:scale-100">
+        <img src="{{ store.logo }}" alt="Logo" class="h-10 md:h-32" />
+      </a>
 
+      {% else %}
 
-
-  {% if is_home %}
-  <a href="{{ store.url }}" class="flex items-center scale-75 md:scale-100">
-    <img src="{{ store.logo }}" alt="Logo" class="h-10 md:h-32" />
-  </a>
-
-  {% else %}
-    
       <a href="{{ store.url }}" class="flex items-center scale-75 md:scale-100">
         <img src="{{ store.logo }}" alt="Logo" class="h-10 md:h-24" />
       </a>
       {% endif %}
     </nav>
-        
+
     <ul
-    class="hidden lg:flex rounded-xl w-max text-white  h-full "
-    style="
+      class="hidden lg:flex rounded-xl w-max text-white h-full"
+      style="
 background-image: url('{{ 'images/Calque_1.svg' | asset }}');
 background-size: cover;
 background-position: center;
 "
-  >
-    <!-- Navigation Item: الرئيسية -->
-    {% if is_home %}
-    <li class="">
-      <a
-        href="{{store.url}}"
-        class="activeNav px-5 py-2 h-12 flex items-center justify-center hoverNav transition-all duration-300 ease-in-out transform focus:outline-none rounded-r"
-      >
-        <p class="leading-none text-base font-semibold">الرئيسية</p>
-      </a>
-    </li>
-    {% else %}
+    >
+      <!-- Navigation Item: الرئيسية -->
+      {% if is_home %}
+      <li class="">
+        <a
+          href="{{store.url}}"
+          class="activeNav px-5 py-2 h-12 flex items-center justify-center hoverNav transition-all duration-300 ease-in-out transform focus:outline-none rounded-r"
+        >
+          <p class="leading-none text-base font-semibold">الرئيسية</p>
+        </a>
+      </li>
+      {% else %}
 
-    <li class="">
-      <a
-        href="{{store.url}}"
-        class="px-5 py-2 h-12 flex items-center justify-center hoverNav transition-all duration-300 ease-in-out transform focus:outline-none rounded-r"
-      >
-        <p class="leading-none text-base font-semibold">الرئيسية</p>
-      </a>
-    </li>
+      <li class="">
+        <a
+          href="{{store.url}}"
+          class="px-5 py-2 h-12 flex items-center justify-center hoverNav transition-all duration-300 ease-in-out transform focus:outline-none rounded-r"
+        >
+          <p class="leading-none text-base font-semibold">الرئيسية</p>
+        </a>
+      </li>
 
-    {% endif %} 
-    
-    {% if theme.settings.get('c_name')|length %}
-    <li class="mx-2 relative">
-      <a class="hoverNav px-5 py-2 h-12 flex items-center justify-center transition-all duration-300 ease-in-out transform focus:outline-none focus:ring-2 focus:ring-gray-500 item">
-        <p class="leading-none text-base font-semibold">
-          {{ theme.settings.get('c_name') }}
-        </p>
-      </a>
-  
-      <!-- Dev Menu -->
-      <div class="absolute conditional-item top-10 left-0 -right-2 w-max z-10 flex justify-between items-center px-4 md:px-1" dir="">
-        <div class="conditional-item mt-5">
-          <div class=" bg-zinc-900 rounded w-max px-5 py-2">
-            <div class="py-1 px-2 rounded hover:bg-gray-900 transition-colors duration-300">
-              item 1
-            </div>
-            <div class="py-1 px-2 rounded hover:bg-gray-900 transition-colors duration-300">
-              item 2
-            </div>
-            <div class="py-1 px-2 rounded hover:bg-gray-900 transition-colors duration-300">
-              item 3
+      {% endif %} {% if theme.settings.get('c_name')|length %}
+      <li class="mx-2 relative">
+        <a
+          class="hoverNav px-5 py-2 h-12 flex items-center justify-center transition-all duration-300 ease-in-out transform focus:outline-none focus:ring-2 focus:ring-gray-500 item"
+        >
+          <p class="leading-none text-base font-semibold">
+            {{ theme.settings.get("c_name") }}
+          </p>
+        </a>
+
+        <!-- Dev Menu -->
+        <div
+          class="absolute conditional-item top-10 left-0 -right-2 w-max z-10 flex justify-between items-center px-4 md:px-1"
+          dir=""
+        >
+          <div class="conditional-item mt-5">
+            <div class="bg-zinc-900 rounded w-max px-5 py-2">
+              {#
+              <div
+                class="py-1 px-2 rounded hover:bg-gray-900 transition-colors duration-300"
+              >
+                item 1
+              </div>
+              <div
+                class="py-1 px-2 rounded hover:bg-gray-900 transition-colors duration-300"
+              >
+                item 2
+              </div>
+              <div
+                class="py-1 px-2 rounded hover:bg-gray-900 transition-colors duration-300"
+              >
+                item 3
+              </div>
+              #} {% for item in theme.settings.get('navbar_c') %}
+              <a
+                href="{{item.url}}"
+                class="py-1 px-2 rounded hover:bg-gray-900 transition-colors duration-300"
+              >
+                <p class="leading-none text-base font-semibold">
+                  {{ item.name }}
+                </p>
+              </a>
+              {% endfor %}
             </div>
           </div>
         </div>
-      </div>
-    </li>
-  {% endif %}
-  
+      </li>
+      {% endif %} {% for item in theme.settings.get('navbar') %}
+      <li class="mx-2">
+        <a
+          href="{{item.url}}"
+          class="hoverNav px-5 py-2 h-12 flex items-center justify-center transition-all duration-300 ease-in-out transform focus:outline-none focus:ring-2 focus:ring-gray-500"
+        >
+          <p class="leading-none text-base font-semibold">
+            {{ item.title }}
+          </p>
+        </a>
+      </li>
 
+      {% endfor %}
+    </ul>
 
-
-
-    {% for item in theme.settings.get('navbar') %}
-    <li class="mx-2">
-      <a
-        href="{{item.url}}"
-        class="hoverNav px-5 py-2 h-12 flex items-center justify-center transition-all duration-300 ease-in-out transform focus:outline-none focus:ring-2 focus:ring-gray-500"
-      >
-        <p class="leading-none text-base font-semibold">
-          {{ item.title }}
- 
-        </p>
-      </a>
-    </li>
-
-    {% endfor %}
-
-  </ul>
-
-    
-  <div>
-    <!-- Button to open search component-->
+    <div>
+      <!-- Button to open search component-->
+    </div>
   </div>
-</div>
- 
-{% if store.scope %}
-<salla-scopes
-  selection="{{ store.scope.display_as == 'popup' ? 'mandatory' : 'optional' }}"
-></salla-scopes>
-{% endif %}
 
-{% for item in  theme.settings.get('navbar_c') %}
- 
-<li class="mx-2"> 
-  <a
-    href="{{item.url}}"
-    class=""
-  >
-    <p class="leading-none text-base font-semibold">
-      {{ item.name }}
-    </p>
-  </a>
-{% endfor %}
-     <script>
-      function toggleDrawer() {
-        const overlay = document.getElementById('drawerOverlay');
-        overlay.classList.toggle('hidden');
-        const drawerContent = document.getElementById('drawerContent');
-        drawerContent.classList.toggle('translate-x-full');
-        drawerContent.classList.toggle('translate-x-0');
-      }
-    
-      function closeDrawer() {
-        document.getElementById('drawerOverlay').classList.add('hidden');
-        document.getElementById('drawerContent').classList.add('translate-x-full');
-      }
-    
-      function toggleMegaMenu() {
-        // Add any necessary Mega Menu toggle logic here
-      }
-    </script>
+  {% if store.scope %}
+  <salla-scopes
+    selection="{{ store.scope.display_as == 'popup' ? 'mandatory' : 'optional' }}"
+  ></salla-scopes>
+  {% endif %}
+
+  <script>
+    function toggleDrawer() {
+      const overlay = document.getElementById("drawerOverlay");
+      overlay.classList.toggle("hidden");
+      const drawerContent = document.getElementById("drawerContent");
+      drawerContent.classList.toggle("translate-x-full");
+      drawerContent.classList.toggle("translate-x-0");
+    }
+
+    function closeDrawer() {
+      document.getElementById("drawerOverlay").classList.add("hidden");
+      document
+        .getElementById("drawerContent")
+        .classList.add("translate-x-full");
+    }
+
+    function toggleMegaMenu() {
+      // Add any necessary Mega Menu toggle logic here
+    }
+
+    window.addEventListener("load", function () {
+      var navbar_c = document.getElementById("navbar_c");
+      var c_name = document.getElementById("c_name");
+        c_name.onclick = function () {
+          navbar_c.classList.toggle("hidden");
+        };
+    });
+  </script>
