@@ -243,9 +243,66 @@
             "source": "Categories",
             "multichoice": true,
             "searchable": true,
-            "required": true,
+            "required": false,
             "value": [],
             "public": true
+        },
+        {
+            "id": "test_c_mode",
+            "type": "boolean",
+            "format": "checkbox",
+            "label": "الوضع الا حطياتي لي  الوحات",
+            "description": "الوضع الا حطياتي لي  الوحات",
+            "labelHTML": null,
+            "icon": "sicon-check-square",
+            "value": true,
+            "selected": false,
+            "required": false
+        },
+        {
+            "id": "c_2",
+            "type": "collection",
+            "format": "collection",
+            "label": "التصنفات المنسدله",
+            "description": null,
+            "labelHTML": null,
+            "item_label": null,
+            "icon": "sicon-list-add",
+            "fields": [
+                {
+                    "id": "c_2.title",
+                    "type": "string",
+                    "format": "text",
+                    "label": "عنوان",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": "Placeholder text ..",
+                    "icon": "sicon-format-text-alt",
+                    "value": null,
+                    "multilanguage": false,
+                    "required": false,
+                    "minLength": "3",
+                    "maxLength": 30
+                },
+                {
+                    "id": "c_2.url",
+                    "type": "string",
+                    "format": "url",
+                    "inputType": "url",
+                    "label": "الرابط",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": "e.g. https://salla.sa",
+                    "icon": "sicon-link",
+                    "value": null,
+                    "required": false,
+                    "minLength": 6,
+                    "maxLength": "3000"
+                }
+            ],
+            "value": [],
+            "minLength": 1,
+            "maxLength": 5
         },
         {
             "id": "line",
