@@ -508,3 +508,6 @@ footer > p {
 .conditional-item {
   display: none;
 }
+select > option:hover {
+  background: orange !important;
+}

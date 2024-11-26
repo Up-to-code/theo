@@ -1,6 +1,6 @@
 {% set color =  theme.settings.get('footer_font_color') %}
 {% set bg =  theme.settings.get('footer_color') %}
-<salla-menu source="footer"></salla-menu>
+{# <salla-menu source="footer"></salla-menu> #}
 
 <footer class="store-footer">
 	<div 
@@ -44,11 +44,11 @@
 				<img
 					src="{{ theme.settings.get('footer_logo') }}"
 					alt="{{ store.name }} logo"
-					class="h-12 w-auto"
 				/>
 		</a>
 		{% endif %}
 	</div>
+					class="h-12 w-auto"
 	</div>
   
 	<!-- Bottom Section -->
