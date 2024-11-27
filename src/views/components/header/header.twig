@@ -207,7 +207,7 @@
                 </a>
               </li>
               {% if theme.settings.get('c_name')|length %}
-              <li class=""id="c_name">
+              <li class="" id="c_name">
                 <p
                   class="px-5 py-2 h-12 flex items-center hover:bg-gray-900 transition-colors duration-300"
                 >
@@ -215,8 +215,28 @@
 
                   <i class="sicon-keyboard_arrow_down"></i>
                 </p>
+
+                {% if theme.settings.get('test_c_mode') %} 
+                {% if theme.settings.get('c_2')|length %}
+                <div class="hidden  px-4" id="navbar_c">
+                  {% for item in theme.settings.get('c_2') %}
+                  <a
+                    href="{{item.url}}"
+                    class="pb-1 px-4 rounded  transition-colors duration-300"
+                  >
+                    <p class="">
+                      {{ item.title }}
+                    </p>
+                  </a>
+
+                  {% endfor %}
+                   
+                </div>
+                {% endif %}
+                {% else %}
+                  
                 {% if theme.settings.get('navbar_c')|length %}
-                <div class="hidden "id='navbar_c'>
+                <div class="hidden" id="navbar_c">
                   {% for item in theme.settings.get('navbar_c') %}
                   <a
                     href="{{item.url}}"
@@ -229,6 +249,7 @@
 
                   {% endfor %}
                 </div>
+                {% endif %}
                 {% endif %}
               </li>
               {% endif %} {% for item in theme.settings.get('navbar') %}
@@ -288,8 +309,8 @@ background-position: center;
         </a>
       </li>
 
-      {% endif %}
-       {% if theme.settings.get('c_name')|length %}
+      {% endif %} 
+      {% if theme.settings.get('c_name')|length %}
       <li class="mx-2 relative">
         <a
           class="hoverNav px-5 py-2 h-12 flex items-center justify-center transition-all duration-300 ease-in-out transform focus:outline-none focus:ring-2 focus:ring-gray-500 item"
@@ -305,46 +326,41 @@ background-position: center;
           dir=""
         >
           <div class="conditional-item mt-5">
-            <div class="bg-zinc-900 rounded w-max px-5 py-2">
-              {#
-              <div
-                class="py-1 px-2 rounded hover:bg-gray-900 transition-colors duration-300"
-              >
-                item 1
-              </div>
-              <div
-                class="py-1 px-2 rounded hover:bg-gray-900 transition-colors duration-300"
-              >
-                item 2
-              </div>
-              <div
-                class="py-1 px-2 rounded hover:bg-gray-900 transition-colors duration-300"
-              >
-                item 3
-              </div>
-              #} 
-
-              {% if theme.settings.get('navbar_c')|length %}
-              
-            {% for item in theme.settings.get('navbar_c') %}
+            <div class="bg-zinc-900 rounded w-max px-5 py-1">
+    
+              {% if theme.settings.get('test_c_mode') %} 
+              {% for item in theme.settings.get('c_2') %}
               <a
                 href="{{item.url}}"
-                class="py-1 px-2 rounded hover:bg-gray-900 transition-colors duration-300"
+                class="py-1 px-2 rounded transition-colors duration-300"
+              >
+                <p class="leading-none text-base font-semibold">
+                  {{ item.title }}
+                </p>
+              </a>
+              {% endfor %}
+              {% else %} 
+              
+              {% if theme.settings.get('navbar_c')|length %} {% for
+              item in theme.settings.get('navbar_c') %}
+              <a
+                href="{{item.url}}"
+                class="py-1 px-2 rounded  transition-colors duration-300"
               >
                 <p class="leading-none text-base font-semibold">
                   {{ item.name }}
                 </p>
               </a>
               {% endfor %}
- 
-              {% endif %}
-       
- 
+               {% endif %} 
+               {% endif %}
             </div>
           </div>
         </div>
+
       </li>
-      {% endif %} {% for item in theme.settings.get('navbar') %}
+      {% endif %} 
+      {% for item in theme.settings.get('navbar') %}
       <li class="mx-2">
         <a
           href="{{item.url}}"
@@ -393,8 +409,9 @@ background-position: center;
     window.addEventListener("load", function () {
       var navbar_c = document.getElementById("navbar_c");
       var c_name = document.getElementById("c_name");
-        c_name.onclick = function () {
-          navbar_c.classList.toggle("hidden");
-        };
+      c_name.onclick = function () {
+        navbar_c.classList.toggle("hidden");
+      };
     });
   </script>
+</div>
