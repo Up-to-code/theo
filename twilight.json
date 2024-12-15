@@ -1,7 +1,7 @@
 {
     "name": {
         "ar": "ثيم نيو",
-        "en": "Theo"
+        "en": "theme new"
     },
     "repository": "https://github.com/Up-to-code/theo",
     "author_email": "uts94452@gmail.com",
@@ -1298,7 +1298,7 @@
     ],
     "support_url": "https://ahmedmansour.vercel.app/",
     "description": {
-        "ar": "",
-        "en": ""
+        "ar": null,
+        "en": null
     }
 }
