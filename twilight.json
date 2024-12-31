@@ -350,7 +350,7 @@
             ],
             "value": [],
             "minLength": 1,
-            "maxLength": 5
+            "maxLength": "6"
         },
         {
             "id": "footer_color",
